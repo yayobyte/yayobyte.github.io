@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap-paper.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert">X</button>
+    <h4>Warning!</h4>
+    You are using an <strong>outdated</strong> browser. Please
+    <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+</div>
+<![endif]-->
+
+
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><img src="img/humanity-logo.jpg"></a>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="users.html">Users</a></li>
+                <li><a href="#">Send Emails</a></li>
+                <li><a href="#">Generate Certificate</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="text-primary">Cristian Guti&eacute;rrez </span><span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                <li> <img class="nav-login-img" src="img/yayo.jpg" alt="yayo" class="img-circle"></li>
+            </ul>
+        </div>
+
+
+    </div>
+</nav>
+<!-- Breadcrums -->
+<ul class="breadcrumb">
+    <li><a href="index.html">Home</a></li>
+    <li class="active">Users</li>
+</ul>
+<!-- End Breadcrums -->
+
+<!-- Page -->
+<div class="container">
+    <!-- Intro -->
+    <h1>Users <small>create new</small></h1>
+    <div class="panel panel-primary container-z1">
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Personal Info</legend>
+
+                    <!-- Id -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group">
+                                <!-- Id -->
+                                <label for="inputNUser" class="col-md-4 control-label text-primary">User id</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="inputNUser" placeholder="1" disabled="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group has-success " >
+                                <label for="inputStatus" class="col-md-4 control-label has-success">Status</label>
+                                <div class="col-md-4">
+                                    <select class="form-control has-success" id="inputStatus">
+                                        <option>Active</option>
+                                        <option>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Document Type-->
+                        <label for="documentType" class="col-md-2 control-label">Document Type</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="documentType">
+                                <option>CC</option>
+                                <option>NIT</option>
+                                <option>CE</option>
+                                <option>Passport</option>
+                            </select>
+                        </div>
+
+                        <!-- Name -->
+                        <label for="inputName" class="col-md-2 control-label">Name</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- First Last Name -->
+                        <label for="inputLastName1" class="col-md-2 control-label">First Last Name</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputLastName1" placeholder="First Last Name">
+                        </div>
+
+                        <!-- Second Last Name -->
+                        <label for="inputLastName2" class="col-md-2 control-label">Second Last Name</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputLastName2" placeholder="Second Last Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Address -->
+                        <label for="inputAddress" class="col-md-2 control-label">Address</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <!-- Birthday -->
+                        <label for="inputBirthDay" class="col-md-2 control-label">Birthday</label>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday">
+                        </div>
+
+                        <!-- Age -->
+                        <label for="inputAge" class="col-md-2 control-label">Age</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputAge" placeholder="Age" disabled="">
+                        </div>
+
+
+
+                    </div>
+                    <div class="form-group">
+                        <!-- Birth Place -->
+                        <label for="inputBirthPlace" class="col-md-2 control-label">Birth place</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputBirthPlace">
+                                <option>Medell&iacute;n</option>
+                                <option>Bogot&aacute;</option>
+                                <option>Manizalez</option>
+                                <option>Caracas</option>
+                            </select>
+                        </div>
+
+                        <!-- Nationality -->
+                        <label for="inputNationality" class="col-md-2 control-label">Nationality</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputNationality" placeholder="Nationality">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- # of children -->
+                        <label for="inputNOfChildren" class="col-md-2 control-label"># of Children</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="inputNOfChildren" placeholder="# of Children">
+                        </div>
+
+                        <!-- Marital Status -->
+                        <label for="inputMaritalStatus" class="col-md-2 control-label col-md-offset-2">Marital Status</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputMaritalStatus">
+                                <option>Single</option>
+                                <option>Married</option>
+                                <option>Divorced</option>
+                                <option>The rest :)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <!-- Scholarship -->
+                        <label for="inputScholarship" class="col-md-2 control-label ">Scholarship</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputScholarship">
+                                <option>High School</option>
+                                <option>Technician</option>
+                                <option>Technology</option>
+                                <option>Professional</option>
+                                <option>Specialist</option>
+                                <option>Master</option>
+                            </select>
+                        </div>
+
+                        <!-- RH -->
+                        <label for="inputRH" class="col-md-2 control-label">RH</label>
+                        <div class="col-md-1">
+                            <input type="text" class="form-control" id="inputRH" placeholder="RH">
+                        </div>
+                        <div class="col-md-1">
+                            <select class="form-control" id="inputBloodType">
+                                <option>+</option>
+                                <option>-</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <!-- People in charge -->
+                        <label for="inputPeopleInCharge" class="col-md-2 control-label ">People in charge</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputPeopleInCharge" placeholder="People in charge">
+                        </div>
+
+                        <!-- Social Stratum  -->
+                        <label for="inputSocialStratum" class="col-md-2 control-label">Social Stratum</label>
+                        <div class="col-md-1">
+                            <select class="form-control" id="inputSocialStratum">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <legend>Contact Info</legend>
+                    <div class="form-group">
+                        <!-- Skype Id -->
+                        <label for="inputSkype" class="col-md-2 control-label">Skype</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputSkype" placeholder="Skype">
+                        </div>
+
+                        <!-- Personal Email -->
+                        <label for="inputPersonalEmail" class="col-md-2 control-label">Personal Email</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputPersonalEmail" placeholder="Personal Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Cellphone -->
+                        <label for="inputCellphone" class="col-md-2 control-label">Cellphone</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputCellphone" placeholder="Cellphone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Contact Name -->
+                        <label for="inputContactName" class="col-md-2 control-label">Contact Name</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputContactName" placeholder="Contact Name">
+                        </div>
+
+                        <!-- Phone Contact Name -->
+                        <label for="inputContactPhoneName" class="col-md-2 control-label">Contact Phone</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputContactPhoneName" placeholder="Contact Phone">
+                        </div>
+                    </div>
+
+                    <legend>Corporate Info</legend>
+                    <div class="form-group">
+                        <!-- Seniority -->
+                        <label for="inputSeniority" class="col-md-2 control-label">Seniority</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputSeniority">
+                                <option>Semi Senior 2</option>
+                                <option>Semi Senior 1</option>
+                                <option>Senior 2</option>
+                                <option>Senior 1</option>
+                                <option>Team Lead</option>
+                                <option>Senior Lead</option>
+                                <option>Specialist</option>
+                                <option>Associate Solutions Manager</option>
+                                <option>Solutions Manager</option>
+                            </select>
+                        </div>
+
+                        <!-- Hired Time -->
+                        <label for="inputHiredTime" class="col-md-2 control-label">Hired</label>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" id="inputHiredTime" placeholder="Hired Time">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Salary -->
+                        <label for="inputSalary" class="col-md-2 control-label">Salary</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control" id="inputSalary" placeholder="Salary">
+                            </div>
+                        </div>
+
+                        <!-- Corporate Email -->
+                        <label for="inputCorporateEmail" class="col-md-2 control-label">Corporate Email</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputCorporateEmail" placeholder="Corporate Email">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Project -->
+                        <label for="inputProject" class="col-md-2 control-label">Project</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputProject">
+                                <option>Pet 360</option>
+                                <option>Mindject</option>
+                                <option>Elavon</option>
+                                <option>The rest :)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <!-- Skill -->
+                        <label class="col-md-2 control-label">Skill</label>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill0"> PHP </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill1"> JAVA </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill2"> .NET </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill3"> JAVASCRIPT </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill4"> RUBY </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill5"> FRONT-END </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill6"> NODE JS </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill7"> ANDROID </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill8"> IOS </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill9"> WINDOWS PHONE </label>
+                        </div>
+                        <div class="col-md-2 col-md-offset-2">
+                            <label><input type="checkbox" id="inputSkill10"> QA MANUAL </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill11"> QA AUTOMATION </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill12"> SDET </label>
+                        </div>
+
+
+                    </div>
+                    <legend>Social Security</legend>
+                    <div class="form-group">
+                        <!-- AFP -->
+                        <label for="inputAFP" class="col-md-2 control-label">AFP</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputAFP">
+                                <option>Fondo Nacional del Ahorro</option>
+                                <option>Protecci&oacute;n</option>
+                                <option>The rest :)</option>
+                            </select>
+                        </div>
+
+                        <!-- EPS -->
+                        <label for="inputEPS" class="col-md-2 control-label">EPS</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputEPS">
+                                <option>Sisben</option>
+                                <option>Coomeva</option>
+                                <option>Saludcoop</option>
+                                <option>Sura</option>
+                                <option>The rest :)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <div class="col-sm-2 col-lg-offset-4" >
+                            <button type="reset" class="btn btn-default btn-block">Cancel</button>
+                        </div>
+                        <div class="col-sm-2" >
+                            <button type="submit" class="btn btn-primary btn-block">Save User</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <!-- End Intro -->
+</div>
+<!-- End Page -->
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+</script>
+</body>
+</html>
