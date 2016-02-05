@@ -26,8 +26,6 @@
 </div>
 <![endif]-->
 
-
-
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -43,7 +41,17 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="users.html">Users</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
+                        Users <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="users.html">List Users</a></li>
+                        <li><a href="users-create.html">Create Users</a></li>
+                        <li class="divider"></li>
+                        <li><a href="users-admin.html">Administrate Users Model</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">Send Emails</a></li>
                 <li><a href="#">Generate Certificate</a></li>
             </ul>
@@ -72,7 +80,8 @@
 <!-- Breadcrums -->
 <ul class="breadcrumb">
     <li><a href="index.html">Home</a></li>
-    <li class="active">Users</li>
+    <li class="active"><a href="users.html">Users</a></li>
+    <li class="active">Create User</li>
 </ul>
 <!-- End Breadcrums -->
 
