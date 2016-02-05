@@ -90,6 +90,30 @@
     <h1>Users</h1>
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <a href="users-create.html" class=" btn btn-default">Create new user</a>
+                </div>
+                <div class="col-md-10 text-right">
+                    <form class="form-inline">
+                        <div class="form-group has-warning">
+                            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">Look For</div>
+                                <input type="text" class="form-control" id="exampleInputAmount" placeholder="String">
+                                <div class="input-group-addon">inside</div>
+                                <select class="form-control" id="inputProject">
+                                    <option>Name</option>
+                                    <option>Last Name</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-warning">Go</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
             <table class="table table-striped table-hover ">
                 <thead>
                 <tr>
@@ -127,6 +151,24 @@
 
                 </tbody>
             </table>
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#">&laquo;</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Pagination-->
+
+
+
         </div>
     </div>
     <!-- End Intro -->
