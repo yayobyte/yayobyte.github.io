@@ -86,28 +86,50 @@
                 <fieldset>
                     <legend>Personal Info</legend>
 
-                    <div class="form-group">
-                        <!-- Id -->
-                        <label for="nUser" class="col-md-2 control-label">User id</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="nUser" placeholder="1" disabled="">
+                    <!-- Id -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group">
+                            <!-- Id -->
+                                <label for="inputNUser" class="col-md-4 control-label text-primary">User id</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="inputNUser" placeholder="1" disabled="">
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- Status -->
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group has-success " >
+                                <label for="inputStatus" class="col-md-4 control-label has-success">Status</label>
+                                <div class="col-md-4">
+                                    <select class="form-control has-success" id="inputStatus">
+                                        <option>Active</option>
+                                        <option>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <!-- Document Type-->
                         <label for="documentType" class="col-md-2 control-label">Document Type</label>
                         <div class="col-md-4">
                             <select class="form-control" id="documentType">
                                 <option>CC</option>
                                 <option>NIT</option>
-                                <option>Alien Card</option>
+                                <option>CE</option>
                                 <option>Passport</option>
                             </select>
                         </div>
-                    </div>
 
-                    <div class="form-group">
                         <!-- Name -->
                         <label for="inputName" class="col-md-2 control-label">Name</label>
-                        <div class="col-md-10">
+                        <div class="col-md-4">
                             <input type="text" class="form-control" id="inputName" placeholder="Name">
                         </div>
                     </div>
@@ -149,6 +171,75 @@
                     </div>
 
                     <div class="form-group">
+
+                        <!-- Birthday -->
+                        <label for="inputBirthDay" class="col-md-2 control-label">Birthday</label>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday">
+                        </div>
+
+                        <!-- Age -->
+                        <label for="inputAge" class="col-md-2 control-label">Age</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputAge" placeholder="Age" disabled="">
+                        </div>
+
+
+
+                    </div>
+                    <div class="form-group">
+                        <!-- Birth Place -->
+                        <label for="inputBirthPlace" class="col-md-2 control-label">Birth place</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputBirthPlace">
+                                <option>Medell&iacute;n</option>
+                                <option>Bogot&aacute;</option>
+                                <option>Manizalez</option>
+                                <option>Caracas</option>
+                            </select>
+                        </div>
+
+                        <!-- Nationality -->
+                        <label for="inputNationality" class="col-md-2 control-label">Nationality</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="inputNationality" placeholder="Nationality">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- # of children -->
+                        <label for="inputNOfChildren" class="col-md-2 control-label"># of Children</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="inputNOfChildren" placeholder="# of Children">
+                        </div>
+
+                        <!-- Marital Status -->
+                        <label for="inputMaritalStatus" class="col-md-2 control-label col-md-offset-2">Marital Status</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputMaritalStatus">
+                                <option>Single</option>
+                                <option>Married</option>
+                                <option>Divorced</option>
+                                <option>The rest :)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <!-- Scholarship -->
+                        <label for="inputScholarship" class="col-md-2 control-label ">Scholarship</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="inputScholarship">
+                                <option>High School</option>
+                                <option>Technician</option>
+                                <option>Technology</option>
+                                <option>Professional</option>
+                                <option>Specialist</option>
+                                <option>Master</option>
+                            </select>
+                        </div>
+
                         <!-- RH -->
                         <label for="inputRH" class="col-md-2 control-label">RH</label>
                         <div class="col-md-1">
@@ -160,12 +251,29 @@
                                 <option>-</option>
                             </select>
                         </div>
+                    </div>
 
-                        <!-- Birthday -->
-                        <label for="inputBirthDay" class="col-md-2 control-label col-md-offset-2">Birthday</label>
+                    <div class="form-group">
+
+                        <!-- People in charge -->
+                        <label for="inputPeopleInCharge" class="col-md-2 control-label ">People in charge</label>
                         <div class="col-md-4">
-                            <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday">
+                            <input type="text" class="form-control" id="inputPeopleInCharge" placeholder="People in charge">
                         </div>
+
+                        <!-- Social Stratum  -->
+                        <label for="inputSocialStratum" class="col-md-2 control-label">Social Stratum</label>
+                        <div class="col-md-1">
+                            <select class="form-control" id="inputSocialStratum">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+
                     </div>
 
                     <legend>Contact Info</legend>
@@ -193,14 +301,19 @@
 
                     <legend>Corporate Info</legend>
                     <div class="form-group">
-                        <!-- Position -->
-                        <label for="inputPosition" class="col-md-2 control-label">Position</label>
+                        <!-- Seniority -->
+                        <label for="inputSeniority" class="col-md-2 control-label">Seniority</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputPosition">
-                                <option>Junior Developer</option>
-                                <option>Semi Senior Developer</option>
-                                <option>Senior Developer</option>
-                                <option>The rest :)</option>
+                            <select class="form-control" id="inputSeniority">
+                                <option>Semi Senior 2</option>
+                                <option>Semi Senior 1</option>
+                                <option>Senior 2</option>
+                                <option>Senior 1</option>
+                                <option>Team Lead</option>
+                                <option>Senior Lead</option>
+                                <option>Specialist</option>
+                                <option>Associate Solutions Manager</option>
+                                <option>Solutions Manager</option>
                             </select>
                         </div>
 
@@ -240,12 +353,6 @@
                                 <option>The rest :)</option>
                             </select>
                         </div>
-
-                        <!-- Corporate Email -->
-                        <label for="inputRoll" class="col-md-2 control-label">Roll</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputRoll" placeholder="Roll">
-                        </div>
                     </div>
 
                     <div class="form-group">
@@ -282,58 +389,52 @@
                         <div class="col-md-2">
                             <label><input type="checkbox" id="inputSkill9"> WINDOWS PHONE </label>
                         </div>
+                        <div class="col-md-2 col-md-offset-2">
+                            <label><input type="checkbox" id="inputSkill10"> QA MANUAL </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill11"> QA AUTOMATION </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label><input type="checkbox" id="inputSkill12"> SDET </label>
+                        </div>
+
+
                     </div>
                     <legend>Social Security</legend>
                     <div class="form-group">
-                        <!-- Pension Fund -->
-                        <label for="inputPensionFund" class="col-md-2 control-label">Pension Fund</label>
+                        <!-- AFP -->
+                        <label for="inputAFP" class="col-md-2 control-label">AFP</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputPensionFund">
+                            <select class="form-control" id="inputAFP">
+                                <option>Fondo Nacional del Ahorro</option>
                                 <option>Protecci&oacute;n</option>
-                                <option>Sura</option>
                                 <option>The rest :)</option>
                             </select>
                         </div>
 
-                        <!-- Health Fund -->
-                        <label for="inputHealthFund" class="col-md-2 control-label">Health Fund</label>
+                        <!-- EPS -->
+                        <label for="inputEPS" class="col-md-2 control-label">EPS</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputHealthFund">
-                                <option>Sura</option>
+                            <select class="form-control" id="inputEPS">
+                                <option>Sisben</option>
                                 <option>Coomeva</option>
                                 <option>Saludcoop</option>
-                                <option>Sisben</option>
+                                <option>Sura</option>
                                 <option>The rest :)</option>
                             </select>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="form-group">
-                        <!-- ARL -->
-                        <label for="inputArl" class="col-md-2 control-label">ARL</label>
-                        <div class="col-md-4">
-                            <select class="form-control" id="inputArl">
-                                <option>Positiva</option>
-                                <option>Protecci&oacute;n</option>
-                                <option>The rest :)</option>
-                            </select>
+                        <div class="col-sm-2 col-lg-offset-4" >
+                            <button type="reset" class="btn btn-default btn-block">Cancel</button>
                         </div>
-
-                        <!-- CCF -->
-                        <label for="inputCcf" class="col-md-2 control-label">CCF</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputCcf" placeholder="CCF">
+                        <div class="col-sm-2" >
+                            <button type="submit" class="btn btn-primary btn-block">Save User</button>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <!-- Severance Fund -->
-                        <label for="inputSeveranceFund" class="col-md-2 control-label">CCF</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputSeveranceFund" placeholder="Severance Fund">
-                        </div>
-
-                    </div>
                 </fieldset>
             </form>
         </div>
