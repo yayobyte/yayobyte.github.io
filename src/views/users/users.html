@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" ng-app="usersModule">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -85,9 +85,9 @@
 <!-- End Breadcrums -->
 
 <!-- Page -->
-<div class="container">
+<div class="container" ng-controller="ListUsersController as listUsers">
     <!-- Intro -->
-    <h1>Users</h1>
+    <h1>{{listUsers.moduleName}}</h1>
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
             <div class="row">
@@ -114,41 +114,22 @@
                 </div>
 
             </div>
-            <table class="table table-striped table-hover ">
+            <table class=" table-striped table-hover table " ng-controller="ListTableCtrl as list">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Last Name</th>
-                    <th>Status</th>
+                    <th>{{list.idField}}</th>
+                    <th>{{list.nameField}}</th>
+                    <th>{{list.lastNameField}}</th>
+                    <th>{{list.statusField}}</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody ng-repeat="record in list.data">
                 <tr>
-                    <td>1</td>
-                    <td>Cristian</td>
-                    <td>Gutiérrez</td>
-                    <td><span class="label label-success">Active</span></td>
+                    <td>{{record.id}}</td>
+                    <td>{{record.name}}</td>
+                    <td>{{record.lastName}}</td>
+                    <td><span class="label" ng-class="{'label-success' : record.status}">{{list.getStatusName(record.status)}}</span></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ximena</td>
-                    <td>Tarazona</td>
-                    <td><span class="label label-danger">Inactive</span></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Daniel</td>
-                    <td>Chavez</td>
-                    <td><span class="label label-success">Active</span></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jean</td>
-                    <td>Paul</td>
-                    <td><span class="label label-success">Active</span></td>
-                </tr>
-
                 </tbody>
             </table>
             <!-- Pagination -->
@@ -182,7 +163,9 @@
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../../js/vendor/bootstrap.min.js"></script>
 <script src="../../js/plugins.js"></script>
-<script src="../../js/main.js"></script>
+
+<script src="../../../node_modules/angular/angular.js"></script>
+<script src="../../js/app/modules/users/createUsers.controller.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

@@ -120,7 +120,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
      * Basically just a wrapper around `console.log` with
      * support for feature-detection.
      *
-     * @api private
+     * @src private
      * @factory
      */
     function LoggerFactory(options) {
@@ -166,12 +166,12 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
     /**
      * What is the `requestQueue`?
-     * 
+     *
      * The request queue is used to simplify app-level connection logic--
      * i.e. so you don't have to wait for the socket to be connected
      * to start trying to  synchronize data.
-     * 
-     * @api private
+     *
+     * @src private
      * @param  {SailsSocket}  socket
      */
 
@@ -202,7 +202,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
     /**
      * Send a JSONP request.
-     * 
+     *
      * @param  {Object}   opts [optional]
      * @param  {Function} cb
      * @return {XMLHttpRequest}
@@ -219,7 +219,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
       var scriptEl = document.createElement('script');
       window._sailsIoJSConnect = function(response) {
         scriptEl.parentNode.removeChild(scriptEl);
-        
+
         cb(response);
       };
       scriptEl.src = opts.url;
@@ -232,12 +232,12 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
     /**
      * The JWR (JSON WebSocket Response) received from a Sails server.
      *
-     * @api public
+     * @src public
      * @param  {Object}  responseCtx
      *         => :body
      *         => :statusCode
      *         => :headers
-     * 
+     *
      * @constructor
      */
 
@@ -269,7 +269,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
 
     /**
-     * @api private
+     * @src private
      * @param  {SailsSocket} socket  [description]
      * @param  {Object} requestCtx [description]
      */
@@ -305,9 +305,9 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
 
     // Version note:
-    // 
+    //
     // `io.SocketNamespace.prototype` doesn't exist in sio 1.0.
-    // 
+    //
     // Rather than adding methods to the prototype for the Socket instance that is returned
     // when the browser connects with `io.connect()`, we create our own constructor, `SailsSocket`.
     // This makes our solution more future-proof and helps us work better w/ the Socket.io team
@@ -320,7 +320,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
     /**
      * SailsSocket
-     * 
+     *
      * A wrapper for an underlying Socket instance that communicates directly
      * to the Socket.io server running inside of Sails.
      *
@@ -328,10 +328,10 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
      * requests and event handler bindings, replaying them when the raw underlying socket actually
      * connects. This is handy when we don't necessarily have the valid configuration to know
      * WHICH SERVER to talk to yet, etc.  It is also used by `io.socket` for your convenience.
-     * 
+     *
      * @constructor
      */
-    
+
     function SailsSocket (opts){
       var self = this;
       opts = opts||{};
@@ -368,8 +368,8 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
     /**
      * Start connecting this socket.
-     * 
-     * @api private
+     *
+     * @src private
      */
     SailsSocket.prototype._connect = function (){
       var self = this;
@@ -405,7 +405,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
         // If `self.url` (aka "target") is falsy, then we don't need to worry about it.
         if (typeof self.url !== 'string') { return false; }
-        
+
         // Get information about the "target" (`self.url`)
         var targetProtocol = (function (){
           try {
@@ -462,7 +462,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
         // socket connection, send a JSONP request first to ensure
         // that a valid cookie is available.  This can be disabled
         // by setting `io.sails.useCORSRouteToGetCookie` to false.
-        // 
+        //
         // Otherwise, skip the stuff below.
         if (!(self.useCORSRouteToGetCookie && isXOrigin)) {
           return cb();
@@ -537,7 +537,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
             // '`io.socket.get("/foo", function serverRespondedWith (body, jwr) { console.log(body); })`'+ '\n' +
           );
         });
-        
+
         self.on('disconnect', function() {
           self.connectionLostTimestamp = (new Date()).getTime();
           consolog('====================================');
@@ -556,7 +556,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
             '\n'
           );
         });
-      
+
         self.on('reconnect', function(transport, numAttempts) {
           var msSinceConnectionLost = ((new Date()).getTime() - self.connectionLostTimestamp);
           var numSecsOffline = (msSinceConnectionLost / 1000);
@@ -567,7 +567,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
             '\n'
           );
         });
-      
+
         // 'error' event is triggered if connection can not be established.
         // (usually because of a failed authorization, which is in turn
         // usually due to a missing or invalid cookie)
@@ -601,7 +601,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
     /**
      * Disconnect the underlying socket.
      *
-     * @api public
+     * @src public
      */
     SailsSocket.prototype.disconnect = function (){
       if (!this._raw) {
@@ -615,7 +615,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
     /**
      * isConnected
      *
-     * @api private
+     * @src private
      * @return {Boolean} whether the socket is connected and able to
      *                           communicate w/ the server.
      */
@@ -666,7 +666,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
     /**
      * Chainable method to bind an event to the socket.
-     * 
+     *
      * @param  {String}   evName [event name]
      * @param  {Function} fn     [event handler function]
      * @return {SailsSocket}
@@ -692,7 +692,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
     /**
      * Chainable method to unbind an event from the socket.
-     * 
+     *
      * @param  {String}   evName [event name]
      * @param  {Function} fn     [event handler function]
      * @return {SailsSocket}
@@ -716,7 +716,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
     /**
      * Chainable method to unbind all events from the socket.
-     * 
+     *
      * @return {SailsSocket}
      */
     SailsSocket.prototype.removeAllListeners = function (){
@@ -729,7 +729,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
       // Otherwise queue the event binding.
       this.eventQueue = {};
-      
+
       return this;
     };
 
@@ -738,7 +738,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
      * e.g.
      *    `socket.get('/user/3', Stats.populate)`
      *
-     * @api public
+     * @src public
      * @param {String} url    ::    destination URL
      * @param {Object} params ::    parameters to send with the request [optional]
      * @param {Function} cb   ::    callback function to call when finished [optional]
@@ -766,7 +766,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
      * e.g.
      *    `socket.post('/event', newMeeting, $spinner.hide)`
      *
-     * @api public
+     * @src public
      * @param {String} url    ::    destination URL
      * @param {Object} params ::    parameters to send with the request [optional]
      * @param {Function} cb   ::    callback function to call when finished [optional]
@@ -794,7 +794,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
      * e.g.
      *    `socket.post('/event/3', changedFields, $spinner.hide)`
      *
-     * @api public
+     * @src public
      * @param {String} url    ::    destination URL
      * @param {Object} params ::    parameters to send with the request [optional]
      * @param {Function} cb   ::    callback function to call when finished [optional]
@@ -822,7 +822,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
      * e.g.
      *    `socket.delete('/event', $spinner.hide)`
      *
-     * @api public
+     * @src public
      * @param {String} url    ::    destination URL
      * @param {Object} params ::    parameters to send with the request [optional]
      * @param {Function} cb   ::    callback function to call when finished [optional]
@@ -859,7 +859,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
      * });
      * ```
      *
-     * @api public
+     * @src public
      * @option {String} url    ::    destination URL
      * @option {Object} params ::    parameters to send with the request [optional]
      * @option {Object} headers::    headers to send with the request [optional]
@@ -952,7 +952,7 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
      *
      * Simulate HTTP over Socket.io.
      *
-     * @api private
+     * @src private
      * @param  {[type]}   options [description]
      * @param  {Function} cb      [description]
      */
@@ -975,10 +975,10 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
       // The environment we're running in.
       // (logs are not displayed when this is set to 'production')
-      // 
+      //
       // Defaults to development unless this script was fetched from a URL
       // that ends in `*.min.js` or '#production' (may also be manually overridden.)
-      // 
+      //
       environment: urlThisScriptWasFetchedFrom.match(/(\#production|\.min\.js)/g) ? 'production' : 'development',
 
       // The version of this sails.io.js client SDK
@@ -1015,15 +1015,15 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
 
 
     // io.socket
-    // 
+    //
     // The eager instance of Socket which will automatically try to connect
     // using the host that this js file was served from.
-    // 
+    //
     // This can be disabled or configured by setting properties on `io.sails.*` within the
     // first cycle of the event loop.
-    // 
+    //
 
-    
+
     // Build `io.socket` so it exists
     // (this does not start the connection process)
     io.socket = new SailsSocket();
@@ -1072,5 +1072,5 @@ if(typeof define=="function"&&typeof define.amd=="object"&&define.amd){define(fu
     // global namespace, you can replace the global `io` with your own `io` here:
     return SailsIOClient();
   }
-  
+
 })();

@@ -134,7 +134,7 @@ module.exports.blueprints = {
   * data from other models which are linked by associations                  *
   *                                                                          *
   * If you have a lot of data in one-to-many associations, leaving this on   *
-  * may result in very heavy api calls                                       *
+  * may result in very heavy src calls                                       *
   *                                                                          *
   ***************************************************************************/
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" ng-app="usersModule">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -29,7 +29,8 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -43,17 +44,24 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="caret"></span>
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span
+                        class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="users.html"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> List Users</a></li>
-                        <li><a href="users-create.html"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Users</a></li>
+                        <li><a href="users.html"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            List Users</a></li>
+                        <li><a href="users-create.html"><span class="glyphicon glyphicon-plus"
+                                                              aria-hidden="true"></span> Create Users</a></li>
                         <li class="divider"></li>
-                        <li><a href="users-admin.html"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Administrate Users Model</a></li>
+                        <li><a href="users-admin.html"><span class="glyphicon glyphicon-wrench"
+                                                             aria-hidden="true"></span> Administrate Users Model</a>
+                        </li>
                     </ul>
                 </li>
-                <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Send Emails</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Generate Certificate</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Send Emails</a>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Generate
+                    Certificate</a></li>
             </ul>
             <!-- User Menu-->
             <ul class="nav navbar-nav navbar-right">
@@ -62,14 +70,17 @@
                         <span class="text-primary">Cristian Guti&eacute;rrez </span><span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Profile</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> My notifications</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Profile</a>
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> My
+                            notifications</a></li>
                         <li class="divider"></li>
-                        <li class="bg-danger"><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log out</a></li>
+                        <li class="bg-danger"><a href="#"><span class="glyphicon glyphicon-off"
+                                                                aria-hidden="true"></span> Log out</a></li>
 
                     </ul>
                 </li>
-                <li> <img class="nav-login-img" src="../../img/yayo.jpg" alt="yayo" class="img-circle"></li>
+                <li><img class="nav-login-img" src="../../img/yayo.jpg" alt="yayo" class="img-circle"></li>
             </ul>
             <!-- -->
         </div>
@@ -86,12 +97,19 @@
 <!-- End Breadcrums -->
 
 <!-- Page -->
-<div class="container">
+<div class="container" ng-controller="CreateUsersController as createUsers">
     <!-- Intro -->
-    <h1>Users <small>create new</small></h1>
+    <h1>{{createUsers.moduleName}}
+        <small>{{createUsers.pageName}}</small>
+    </h1>
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
-            <form class="form-horizontal">
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">X</button>
+                Form valid {{createUsersForm.$valid}}
+            </div>
+            <form name="createUsersForm" class="form-horizontal"
+                  ng-submit="createUsersForm.$valid && createUsers.validateForData()">
                 <fieldset>
                     <legend>Personal Info</legend>
 
@@ -102,7 +120,8 @@
                                 <!-- Id -->
                                 <label for="inputNUser" class="col-md-4 control-label text-primary">User id</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="inputNUser" placeholder="1" disabled="">
+                                    <input type="text" class="form-control" id="inputNUser" placeholder="1"
+                                           disabled required ng-model="createUsers.id">
                                 </div>
                             </div>
                         </div>
@@ -112,12 +131,13 @@
 
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="form-group has-success " >
+                            <div class="form-group has-success ">
                                 <label for="inputStatus" class="col-md-4 control-label has-success">Status</label>
                                 <div class="col-md-4">
-                                    <select class="form-control has-success" id="inputStatus">
-                                        <option>Active</option>
-                                        <option>Inactive</option>
+                                    <select class="form-control has-success" id="inputStatus"
+                                            ng-model="createUsers.status"
+                                            ng-options="item.name for item in createUsers.status">
+                                        <option value="">-- Choose status --</option>
                                     </select>
                                 </div>
                             </div>
@@ -128,18 +148,16 @@
                         <!-- Document Type-->
                         <label for="documentType" class="col-md-2 control-label">Document Type</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="documentType">
-                                <option>CC</option>
-                                <option>NIT</option>
-                                <option>CE</option>
-                                <option>Passport</option>
+                            <select class="form-control" id="documentType" required ng-model="createUsers.documentType">
+
                             </select>
                         </div>
 
                         <!-- Name -->
                         <label for="inputName" class="col-md-2 control-label">Name</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                            <input type="text" class="form-control" id="inputName" placeholder="Name" required
+                            ng-model="createUsers.name">
                         </div>
                     </div>
 
@@ -147,13 +165,15 @@
                         <!-- First Last Name -->
                         <label for="inputLastName1" class="col-md-2 control-label">First Last Name</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputLastName1" placeholder="First Last Name">
+                            <input type="text" class="form-control" id="inputLastName1" placeholder="First Last Name"
+                            ng-model="createUsers.firstLastName" required>
                         </div>
 
                         <!-- Second Last Name -->
                         <label for="inputLastName2" class="col-md-2 control-label">Second Last Name</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputLastName2" placeholder="Second Last Name">
+                            <input type="text" class="form-control" id="inputLastName2" placeholder="Second Last Name"
+                            ng-model="createUsers.secondLastName" required>
                         </div>
                     </div>
 
@@ -161,10 +181,10 @@
                         <!-- Address -->
                         <label for="inputAddress" class="col-md-2 control-label">Address</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Address"
+                            ng-model="createUsers.address" required>
                         </div>
                     </div>
-
 
 
                     <div class="form-group">
@@ -172,15 +192,16 @@
                         <!-- Birthday -->
                         <label for="inputBirthDay" class="col-md-2 control-label">Birthday</label>
                         <div class="col-md-4">
-                            <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday">
+                            <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday"
+                            ng-model="createUsers.birthday" required>
                         </div>
 
                         <!-- Age -->
                         <label for="inputAge" class="col-md-2 control-label">Age</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputAge" placeholder="Age" disabled="">
+                            <input type="text" class="form-control" id="inputAge" placeholder="Age"
+                            ng-model="createUsers.age" required>
                         </div>
-
 
 
                     </div>
@@ -188,7 +209,7 @@
                         <!-- Birth Place -->
                         <label for="inputBirthPlace" class="col-md-2 control-label">Birth place</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputBirthPlace">
+                            <select class="form-control" id="inputBirthPlace" ng-model="createUsers.birthPlace" required>
                                 <option>Medell&iacute;n</option>
                                 <option>Bogot&aacute;</option>
                                 <option>Manizalez</option>
@@ -199,7 +220,8 @@
                         <!-- Nationality -->
                         <label for="inputNationality" class="col-md-2 control-label">Nationality</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputNationality" placeholder="Nationality">
+                            <input type="text" class="form-control" id="inputNationality" placeholder="Nationality"
+                            ng-model="createUsers.nationality" required>
                         </div>
                     </div>
 
@@ -207,13 +229,15 @@
                         <!-- # of children -->
                         <label for="inputNOfChildren" class="col-md-2 control-label"># of Children</label>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" id="inputNOfChildren" placeholder="# of Children">
+                            <input type="text" class="form-control" id="inputNOfChildren" placeholder="# of Children"
+                            ng-model="createUsers.nOfChildren" required>
                         </div>
 
                         <!-- Marital Status -->
-                        <label for="inputMaritalStatus" class="col-md-2 control-label col-md-offset-2">Marital Status</label>
+                        <label for="inputMaritalStatus" class="col-md-2 control-label col-md-offset-2">Marital
+                            Status</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputMaritalStatus">
+                            <select class="form-control" id="inputMaritalStatus" ng-model="createUsers.maritalStatus" required>
                                 <option>Single</option>
                                 <option>Married</option>
                                 <option>Divorced</option>
@@ -227,7 +251,7 @@
                         <!-- Scholarship -->
                         <label for="inputScholarship" class="col-md-2 control-label ">Scholarship</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputScholarship">
+                            <select class="form-control" id="inputScholarship" ng-model="createUsers.scholarship" >
                                 <option>High School</option>
                                 <option>Technician</option>
                                 <option>Technology</option>
@@ -240,10 +264,11 @@
                         <!-- RH -->
                         <label for="inputRH" class="col-md-2 control-label">RH</label>
                         <div class="col-md-1">
-                            <input type="text" class="form-control" id="inputRH" placeholder="RH">
+                            <input type="text" class="form-control" id="inputRH" placeholder="RH"
+                                   ng-model="createUsers.rh" required>
                         </div>
                         <div class="col-md-1">
-                            <select class="form-control" id="inputBloodType">
+                            <select class="form-control" id="inputBloodType" ng-model="createUsers.bloodType" required>
                                 <option>+</option>
                                 <option>-</option>
                             </select>
@@ -255,13 +280,15 @@
                         <!-- People in charge -->
                         <label for="inputPeopleInCharge" class="col-md-2 control-label ">People in charge</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputPeopleInCharge" placeholder="People in charge">
+                            <input type="text" class="form-control" id="inputPeopleInCharge"
+                                   placeholder="People in charge" ng-model="createUsers.peopleInCharge" required>
                         </div>
 
                         <!-- Social Stratum  -->
                         <label for="inputSocialStratum" class="col-md-2 control-label">Social Stratum</label>
                         <div class="col-md-1">
-                            <select class="form-control" id="inputSocialStratum">
+                            <select class="form-control" id="inputSocialStratum"
+                                    ng-model="createUsers.socialStratum" required>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -278,13 +305,15 @@
                         <!-- Skype Id -->
                         <label for="inputSkype" class="col-md-2 control-label">Skype</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputSkype" placeholder="Skype">
+                            <input type="text" class="form-control" id="inputSkype" placeholder="Skype"
+                            ng-model="createUsers.skype" required>
                         </div>
 
                         <!-- Personal Email -->
                         <label for="inputPersonalEmail" class="col-md-2 control-label">Personal Email</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputPersonalEmail" placeholder="Personal Email">
+                            <input type="email" class="form-control" id="inputPersonalEmail"
+                                   placeholder="Personal Email" ng-model="createUsers.personalEmail" required>
                         </div>
                     </div>
 
@@ -292,7 +321,8 @@
                         <!-- Cellphone -->
                         <label for="inputCellphone" class="col-md-2 control-label">Cellphone</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputCellphone" placeholder="Cellphone">
+                            <input type="text" class="form-control" id="inputCellphone" placeholder="Cellphone"
+                            ng-model="createUsers.cellphone" required>
                         </div>
                     </div>
 
@@ -300,13 +330,15 @@
                         <!-- Contact Name -->
                         <label for="inputContactName" class="col-md-2 control-label">Contact Name</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputContactName" placeholder="Contact Name">
+                            <input type="text" class="form-control" id="inputContactName" placeholder="Contact Name"
+                            ng-model="createUsers.contactName">
                         </div>
 
                         <!-- Phone Contact Name -->
                         <label for="inputContactPhoneName" class="col-md-2 control-label">Contact Phone</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputContactPhoneName" placeholder="Contact Phone">
+                            <input type="text" class="form-control" id="inputContactPhoneName"
+                                   placeholder="Contact Phone" ng-model="createUsers.contactPhone">
                         </div>
                     </div>
 
@@ -315,7 +347,7 @@
                         <!-- Seniority -->
                         <label for="inputSeniority" class="col-md-2 control-label">Seniority</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputSeniority">
+                            <select class="form-control" id="inputSeniority" ng-model="createUsers.seniority">
                                 <option>Semi Senior 2</option>
                                 <option>Semi Senior 1</option>
                                 <option>Senior 2</option>
@@ -331,7 +363,8 @@
                         <!-- Hired Time -->
                         <label for="inputHiredTime" class="col-md-2 control-label">Hired</label>
                         <div class="col-md-4">
-                            <input type="date" class="form-control" id="inputHiredTime" placeholder="Hired Time">
+                            <input type="date" class="form-control" id="inputHiredTime" placeholder="Hired Time"
+                                ng-model="createUsers.hiredTime">
                         </div>
                     </div>
 
@@ -341,14 +374,16 @@
                         <div class="col-md-4">
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="text" class="form-control" id="inputSalary" placeholder="Salary">
+                                <input type="text" class="form-control" id="inputSalary" placeholder="Salary"
+                                       ng-model="createUsers.salary" required>
                             </div>
                         </div>
 
                         <!-- Corporate Email -->
                         <label for="inputCorporateEmail" class="col-md-2 control-label">Corporate Email</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="inputCorporateEmail" placeholder="Corporate Email">
+                            <input type="email" class="form-control" id="inputCorporateEmail"
+                                   placeholder="Corporate Email" ng-model="createUsers.corporateEmail">
                         </div>
 
                     </div>
@@ -357,7 +392,7 @@
                         <!-- Project -->
                         <label for="inputProject" class="col-md-2 control-label">Project</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputProject">
+                            <select class="form-control" id="inputProject" ng-model="createUsers.project">
                                 <option>Pet 360</option>
                                 <option>Mindject</option>
                                 <option>Elavon</option>
@@ -409,15 +444,13 @@
                         <div class="col-md-2">
                             <label><input type="checkbox" id="inputSkill12"> SDET </label>
                         </div>
-
-
                     </div>
                     <legend>Social Security</legend>
                     <div class="form-group">
                         <!-- AFP -->
                         <label for="inputAFP" class="col-md-2 control-label">AFP</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputAFP">
+                            <select class="form-control" id="inputAFP" ng-model="createUsers.afp">
                                 <option>Fondo Nacional del Ahorro</option>
                                 <option>Protecci&oacute;n</option>
                                 <option>The rest :)</option>
@@ -427,7 +460,7 @@
                         <!-- EPS -->
                         <label for="inputEPS" class="col-md-2 control-label">EPS</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="inputEPS">
+                            <select class="form-control" id="inputEPS" ng-model="createUsers.eps" required>
                                 <option>Sisben</option>
                                 <option>Coomeva</option>
                                 <option>Saludcoop</option>
@@ -438,14 +471,13 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <div class="col-sm-2 col-lg-offset-4" >
+                        <div class="col-sm-2 col-lg-offset-4">
                             <button type="reset" class="btn btn-default btn-block">Cancel</button>
                         </div>
-                        <div class="col-sm-2" >
+                        <div class="col-sm-2">
                             <button type="submit" class="btn btn-primary btn-block">Save User</button>
                         </div>
                     </div>
-
                 </fieldset>
             </form>
         </div>
@@ -458,16 +490,26 @@
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../../js/vendor/bootstrap.min.js"></script>
 <script src="../../js/plugins.js"></script>
-<script src="../../js/main.js"></script>
+
+<script src="../../../node_modules/angular/angular.js"></script>
+<script src="../../js/app/modules/users/createUsers.controller.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='https://www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+    (function (b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function () {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
 </script>
 </body>
 </html>
