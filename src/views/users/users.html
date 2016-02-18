@@ -90,45 +90,45 @@
     <h1>{{listUsers.moduleName}}</h1>
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
+
+            <!-- Filter-->
             <div class="row">
                 <div class="col-md-2 text-center">
                     <a href="users-create.html" class=" btn btn-default">Create new user</a>
                 </div>
                 <div class="col-md-10 text-right">
-                    <form class="form-inline">
+                    <form class="form-inline" name="filterForm">
                         <div class="form-group has-warning">
                             <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
-                                <input type="text" class="form-control" id="exampleInputAmount" placeholder="String">
-                                <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div>
-                                <select class="form-control" id="inputProject">
-                                    <option>Name</option>
-                                    <option>Last Name</option>
-                                </select>
+                                <input type="text" class="form-control" id="exampleInputAmount" placeholder="String"
+                                ng-model="stringFilter">
                             </div>
-                            <button type="submit" class="btn btn-warning">Go</button>
                         </div>
 
                     </form>
                 </div>
-
             </div>
-            <table class=" table-striped table-hover table " ng-controller="ListTableCtrl as list">
+
+            <!-- Table -->
+            <table class="table-striped table-hover table">
                 <thead>
                 <tr>
-                    <th>{{list.idField}}</th>
-                    <th>{{list.nameField}}</th>
-                    <th>{{list.lastNameField}}</th>
-                    <th>{{list.statusField}}</th>
+                    <th>{{listUsers.tableFields.id}}</th>
+                    <th>{{listUsers.tableFields.name}}</th>
+                    <th>{{listUsers.tableFields.lastName}}</th>
+                    <th>{{listUsers.tableFields.status}}</th>
                 </tr>
                 </thead>
-                <tbody ng-repeat="record in list.data">
-                <tr>
-                    <td>{{record.id}}</td>
-                    <td>{{record.name}}</td>
-                    <td>{{record.lastName}}</td>
-                    <td><span class="label" ng-class="{'label-success' : record.status}">{{list.getStatusName(record.status)}}</span></td>
+                <tbody >
+                <tr ng-repeat="user in listUsers.tableData | filter : stringFilter">
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td><span class="label" ng-class="[{'label-success' : user.status},{'label-danger': !user.status}]">
+                        {{user.status == 1 ? 'Active' : 'Inactive'}}</span>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -165,7 +165,7 @@
 <script src="../../js/plugins.js"></script>
 
 <script src="../../../node_modules/angular/angular.js"></script>
-<script src="../../js/app/modules/users/createUsers.controller.js"></script>
+<script src="../../js/app/modules/users/listUsers.controller.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

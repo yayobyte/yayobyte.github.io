@@ -1,34 +1,10 @@
 'use strict';
 (function(){
     angular.module('usersModule',[])
-        .controller('CreateUsersController', CreateUsersController);
+        .controller('CreateUsersController', CreateUsersController)
 
     var moduleName = "Users";
-    var tableData = [{
-        "id": 1,
-        "name": "Cristian",
-        "lastName": "Gutiérrez",
-        "status": 1
-    },
-        {
-            "id": 2,
-            "name": "Ximena",
-            "lastName": "Tarazona",
-            "status": 0
-        },
-        {
-            "id": 3,
-            "name": "Daniel",
-            "lastName": "Chavez",
-            "status": 1
-        },
-        {
-            "id": 4,
-            "name": "Cosme",
-            "lastName": "Fulanito",
-            "status": 0
-        }
-    ];
+
 
     var status = [
         {
@@ -65,6 +41,17 @@
             }
         ]
     };
+
+
+    function ListUsersController (){
+        var vm = this;
+
+        vm.moduleName = moduleName;
+    }
+
+
+
+
 
     function CreateUsersController(){
         var vm = this;

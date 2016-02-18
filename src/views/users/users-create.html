@@ -84,8 +84,6 @@
             </ul>
             <!-- -->
         </div>
-
-
     </div>
 </nav>
 <!-- Breadcrums -->
@@ -104,7 +102,7 @@
     </h1>
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
-            <div class="alert alert-warning alert-dismissible">
+            <div class="alert  alert-dismissible" ng-class="[{'alert-warning' : !createUsersForm.$valid},{'alert-success' : createUsersForm.$valid}]">
                 <button type="button" class="close" data-dismiss="alert">X</button>
                 Form valid {{createUsersForm.$valid}}
             </div>
@@ -136,7 +134,7 @@
                                 <div class="col-md-4">
                                     <select class="form-control has-success" id="inputStatus"
                                             ng-model="createUsers.status"
-                                            ng-options="item.name for item in createUsers.status">
+                                            ng-options="option.name for option in createUsers.status">
                                         <option value="">-- Choose status --</option>
                                     </select>
                                 </div>
