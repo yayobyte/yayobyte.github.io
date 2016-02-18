@@ -10,14 +10,13 @@ module.exports = {
   attributes: {
     'id' : {
       type: 'integer',
-      required: true,
       primaryKey: true,
-      autoincrement : true,
+      autoIncrement : true,
       unique : true,
       columnName: 'id_user'
     },
     'status' : {
-      type: 'integer',
+      type: 'binary',
       required: true,
     },
     'documentType' : {
@@ -44,15 +43,15 @@ module.exports = {
       required : true
     },
     'birthday' : {
-      type : 'string',
+      type : 'date',
       required : false
     },
     'age' : {
-      type : 'string',
+      type : 'integer',
       required : true
     },
     'birthPlace' : {
-      type : 'string',
+      type : 'integer',
       required : true,
       columnName: 'birth_place'
     },
@@ -79,7 +78,7 @@ module.exports = {
       required : true
     },
     'bloodType' : {
-      type : 'boolean',
+      type : 'binary',
       required : true,
       columnName: 'blood_type'
     },
