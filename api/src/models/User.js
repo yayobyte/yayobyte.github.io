@@ -7,6 +7,7 @@
 
 module.exports = {
 
+
   attributes: {
     'id' : {
       type: 'integer',
@@ -16,13 +17,15 @@ module.exports = {
       columnName: 'id_user'
     },
     'status' : {
-      type: 'binary',
+      type: 'boolean',
       required: true,
     },
     'documentType' : {
-      type : 'integer',
       required: true,
-      columnName: 'document_type'
+      columnName: 'document_type',
+      type: 'integer'
+//      collection: 'documentType',
+//      via : 'documentType'
     },
     'name' : {
       type : 'string',
@@ -76,11 +79,6 @@ module.exports = {
     'rh' : {
       type : 'integer',
       required : true
-    },
-    'bloodType' : {
-      type : 'binary',
-      required : true,
-      columnName: 'blood_type'
     },
     'peopleInCharge' : {
       type : 'integer',

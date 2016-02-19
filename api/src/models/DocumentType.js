@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  tableName: 'document_type',
+
   attributes: {
     'id' : {
       type: 'integer',
@@ -15,11 +17,16 @@ module.exports = {
       unique : true,
       columnName: 'id_document_type'
     },
-    'documentName' : {
+    'name' : {
       type: 'string',
-      columnName: 'document_name',
+      columnName: 'name',
       required: true
+    },
+    /*
+    'owner' : {
+      model : 'user'
     }
+*/
   }
 };
 

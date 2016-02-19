@@ -8,7 +8,16 @@
 module.exports = {
 
   attributes: {
-
+    'id' : {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement : true,
+      unique : true,
+      columnName: 'id_project'
+    },
+    'name' : {
+      type: 'string',
+      required : true
+    }
   }
 };
-

@@ -8,7 +8,21 @@
 module.exports = {
 
   attributes: {
-
+    'id' : {
+      type: 'integer',
+      primaryKey: true,
+      autoIncrement : true,
+      unique : true,
+      columnName: 'id_country'
+    },
+    'name' : {
+      type: 'string',
+      required : true
+    },
+    'nationality' : {
+      type : 'string',
+      required : true
+    }
   }
 };
 
