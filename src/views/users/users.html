@@ -110,7 +110,6 @@
                     </form>
                 </div>
             </div>
-
             <!-- Table -->
             <table class="table-striped table-hover table">
                 <thead>
@@ -118,6 +117,7 @@
                     <th>{{listUsers.tableFields.id}}</th>
                     <th>{{listUsers.tableFields.name}}</th>
                     <th>{{listUsers.tableFields.lastName}}</th>
+                    <th>{{listUsers.tableFields.projectName}}</th>
                     <th>{{listUsers.tableFields.status}}</th>
                 </tr>
                 </thead>
@@ -125,7 +125,8 @@
                 <tr ng-repeat="user in listUsers.tableData | filter : stringFilter">
                     <td>{{user.id}}</td>
                     <td>{{user.name}}</td>
-                    <td>{{user.lastName}}</td>
+                    <td>{{user.firstLastName}} {{user.secondLastName}}</td>
+                    <td>{{user.project.name}}</td>
                     <td><span class="label" ng-class="[{'label-success' : user.status},{'label-danger': !user.status}]">
                         {{user.status == 1 ? 'Active' : 'Inactive'}}</span>
                     </td>
@@ -165,6 +166,7 @@
 <script src="../../js/plugins.js"></script>
 
 <script src="../../../node_modules/angular/angular.js"></script>
+<script src="../../../node_modules/angular-resource/angular-resource.js"></script>
 <script src="../../js/app/modules/users/listUsers.controller.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

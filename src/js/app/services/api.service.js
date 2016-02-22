@@ -1,9 +1,9 @@
 'use strict';
 (function(){
-    angular.module('usersModule')
-        .service('apiSrv', apiSrv);
+    angular.module('Humanity')
+        .service('Users', apiSrv);
 
-    function apiSvr(){
+    function Users(){
         var prop = 'some';
 
         function some (){

@@ -1,14 +1,16 @@
 'use strict';
 (function(){
-    angular.module('usersModule',[])
-        .controller('ListUsersController',listUsersController);
+    angular.module('usersModule',['ngResource'])
+        .controller('ListUsersController',listUsersController)
+        .factory("UserList", usersApi);
 
+    var usersApiEndpoint = "http://localhost:1337/user" ;
     var tableData = [{
         "id": 1,
         "name": "Cristian",
         "lastName": "Gutiérrez",
         "status": 1
-    },
+        },
         {
             "id": 2,
             "name": "Ximena",
@@ -29,7 +31,11 @@
         }
     ];
 
-    function listUsersController (){
+    function usersApi ($resource) {
+        return $resource(usersApiEndpoint);
+    }
+
+    function listUsersController (UserList){
         var vm = this;
 
         vm.moduleName = "User";
@@ -37,9 +43,14 @@
             "id" : "#",
             "name" : "name",
             "lastName" : "Last Name",
-            "status" : "Status"
+            "status" : "Status",
+            "projectName" : "Project Name"
         };
-        vm.tableData = tableData;
+
+        UserList.query(function(data){
+            vm.tableData = data;
+        });
+
 
     }
 })();
