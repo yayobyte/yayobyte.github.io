@@ -22,10 +22,9 @@ module.exports = {
     },
     'documentType' : {
       required: true,
-      columnName: 'document_type',
-      type: 'integer'
-//      collection: 'documentType',
-//      via : 'documentType'
+      type : 'integer',
+      model : 'DocumentType',
+      columnName : 'document_type'
     },
     'name' : {
       type : 'string',
@@ -56,11 +55,13 @@ module.exports = {
     'birthPlace' : {
       type : 'integer',
       required : true,
-      columnName: 'birth_place'
+      columnName: 'birth_place',
+      model: 'BirthPlace'
     },
     'nationality' : {
       type : 'integer',
-      required : true
+      required : true,
+      model : 'Country'
     },
     'nOfChildren' : {
       type : 'integer',
@@ -70,15 +71,18 @@ module.exports = {
     'maritalStatus' : {
       type : 'integer',
       required : true,
-      columnName: 'marital_status'
+      columnName: 'marital_status',
+      model : 'MaritalStatus'
     },
     'scholarship' : {
       type : 'integer',
-      required : true
+      required : true,
+      model : 'Scholarship'
     },
     'rh' : {
       type : 'integer',
-      required : true
+      required : true,
+      model : 'Rh'
     },
     'peopleInCharge' : {
       type : 'integer',
@@ -115,7 +119,8 @@ module.exports = {
     },
     'seniority' : {
       type : 'integer',
-      required : true
+      required : true,
+      model : 'Seniority'
     },
     'hiredTime' : {
       type : 'date',
@@ -133,20 +138,24 @@ module.exports = {
     },
     'project' : {
       type : 'integer',
-      required : true
+      required : true,
+      model : 'Project'
     },
     'skill' : {
       type : 'json',
       required : true,
-      columnName: 'skills'
+      columnName: 'skills',
+      model : 'Skills'
     },
     'afp' : {
       type : 'integer',
-      required : true
+      required : true,
+      model : 'Afp'
     },
     'eps' : {
       type : 'integer',
-      required : true
+      required : true,
+      model : 'Eps'
     }
   }
 };

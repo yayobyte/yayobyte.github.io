@@ -21,12 +21,6 @@ module.exports = {
       type: 'string',
       columnName: 'name',
       required: true
-    },
-    /*
-    'owner' : {
-      model : 'user'
     }
-*/
   }
 };
-
