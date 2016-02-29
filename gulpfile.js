@@ -3,39 +3,91 @@
  */
 var concat = require('gulp-concat');
 var gulp = require('gulp');
+var nodeModules = './node_modules'
 var src = './src';
 var dist = './dist';
 
-
-gulp.task('scripts', function() {
+/***************** JAVASCRIPT **************/
+gulp.task('js:vendors', function() {
     return gulp.src([
-        src + '/js/vendor/**/*.js',
-        src + '/js/*.js'
+
+        nodeModules + '/angular/angular.min.js',
+        nodeModules + '/jquery/dist/jquery.min.js',
+        nodeModules + '/bootstrap/dist/js/bootstrap.min.js'
+        //nodeModules + '/angular-bootstrap/**/*.min.js'
     ])
-        .pipe(concat('all.js'))
+        .pipe(concat('vendors.js'))
         .pipe(gulp.dest(dist + '/js'));
 });
 
+gulp.task('js:app', function (){
+    return gulp.src([
+        src + '/js/**/*.js'
+    ])
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest(dist + '/js'))
+        ;
+});
+
+/****************** CSS **********************/
 gulp.task('styles', function() {
-    return gulp.src([src + '/css/vendor/**/*.css', src + '/css/*.js'])
+    return gulp.src([
+            src + '/css/vendors/**/*.css',
+            src + '/css/**/*.css',
+
+            //nodeModules + '/bootstrap/dist/css/**/*.min.css'
+        ])
         .pipe(concat('all.css'))
         .pipe(gulp.dest(dist + '/css'));
 });
 
-gulp.task('index', function() {
+/****************** HTML *********************/
+gulp.task('html:index', function() {
     return gulp.src(src + '/index.html')
         .pipe(gulp.dest(dist));
 });
 
+gulp.task('html:views', function (){
+    return gulp.src([
+            src + '/views/**/*.html'
+        ])
+        .pipe(gulp.dest(dist + '/html'))
+        ;
+});
+
+/******************** OTHER *******************/
+gulp.task('fonts', function (){
+    return gulp.src([
+            nodeModules + '/bootstrap/dist/fonts/**/*'
+        ])
+        .pipe(gulp.dest(dist + '/fonts'))
+        ;
+});
+
+gulp.task('img', function (){
+    return gulp.src([
+            src + '/img/**/*'
+        ])
+        .pipe(gulp.dest(dist + '/img'))
+        ;
+});
+
+/********************* WATCHERS *****************/
 gulp.task('watchers', function(){
-    gulp.watch(src + '/**/*.js', ['scripts']);
+    gulp.watch(src + '/**/*.js', ['js:app','js:vendors']);
+    gulp.watch(src + '/**/*.html', ['html:views']);
 });
 
 
+/********************** GULP TASKS *******************/
 gulp.task('default', [
-    'index',
-    'scripts',
-    'styles'
+    'html:index',
+    'js:app',
+    'js:vendors',
+    'styles',
+    'html:views',
+    'fonts',
+    'img'
 ])
 
 
