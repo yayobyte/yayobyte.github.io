@@ -7,7 +7,7 @@
         .factory('DocumentTypeFactory',nationalityApi);
 
     var sailsEndpoint = "http://localhost:1337";
-    var nationalityApiEndpoint = sailsEndpoint + "/country" ;
+    var nationalityApiEndpoint = sailsEndpoint + "/documenttype" ;
 
     function nationalityApi ($resource) {
         return $resource(nationalityApiEndpoint);

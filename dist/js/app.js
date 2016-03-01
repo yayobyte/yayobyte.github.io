@@ -55,7 +55,7 @@
         .factory('DocumentTypeFactory',nationalityApi);
 
     var sailsEndpoint = "http://localhost:1337";
-    var nationalityApiEndpoint = sailsEndpoint + "/country" ;
+    var nationalityApiEndpoint = sailsEndpoint + "/documenttype" ;
 
     function nationalityApi ($resource) {
         return $resource(nationalityApiEndpoint);
@@ -258,63 +258,83 @@
 
     var moduleName = "Users";
 
-
-    var status = [
-        {
-            "id" : 0,
-            "name" : "Inactive"
-        },
-        {
-            "id" : 1,
-            "name" : "Active"
-        },
-        {
-            "id" : 2,
-            "name" : "Not Sure now"
-        }
+    var statusApi = [
+        { "id" : 0, "name" : "Inactive" },
+        { "id" : 1, "name" : "Active" }
     ];
 
-    var masterData = {
-        "documentType" : [
-            {
-                "id": 0,
-                "name": "CC"
-            },
-            {
-                "id": 1,
-                "name": "NIT"
-            },
-            {
-                "id": 2,
-                "name": "CE"
-            },
-            {
-                "id": 3,
-                "name": "Passport"
-            }
-        ]
-    };
-
-
-    function ListUsersController (){
-        var vm = this;
-
-        vm.moduleName = moduleName;
-    }
+    var socialStratumApi = [
+        { "id" : 1, "name" : "1" },
+        { "id" : 2, "name" : "2" },
+        { "id" : 3, "name" : "3" },
+        { "id" : 4, "name" : "4" },
+        { "id" : 5, "name" : "5" },
+        { "id" : 6, "name" : "6" }
+    ];
 
 
 
-
-
-    function CreateUsersController(){
+    function CreateUsersController(DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
+                                   ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
+                                   EpsFactory){
         var vm = this;
         vm.moduleName = moduleName;
         vm.pageName = "create";
 
+        //Select lists
+        vm.documentTypeApi = "";
+        vm.birthPlaceApi = "";
+        vm.nationalityApi = "";
+        vm.maritalStatusApi = "";
+        vm.scholarshipApi = "";
+        vm.rhApi = "";
+
+        vm.seniorityApi = "";
+        vm.projectApi = "";
+        vm.afpApi = "";
+        vm.epsApi = "";
+
+
+        //Hard-coded selects
+        vm.socialStratumApi = socialStratumApi;
+        vm.statusApi = statusApi;
+
+
+        DocumentTypeFactory.query(function (data){
+            vm.documentTypeApi = data;
+        });
+        BirthPlaceFactory.query(function (data){
+            vm.birthPlaceApi = data;
+        });
+        NationalityFactory.query(function (data){
+            vm.nationalityApi = data;
+        });
+        MaritalStatusFactory.query(function (data){
+            vm.maritalStatusApi = data;
+        });
+        ScholarshipFactory.query(function (data){
+            vm.scholarshipApi = data;
+        });
+        RhFactory.query(function (data){
+            vm.rhApi = data;
+        });
+        SeniorityFactory.query(function (data){
+            vm.seniorityApi = data;
+        });
+        ProjectFactory.query(function (data){
+            vm.projectApi = data;
+        });
+        AfpFactory.query(function (data){
+            vm.afpApi = data;
+        });
+        EpsFactory.query(function (data){
+            vm.epsApi = data;
+        });
+
         //Personal Info
         vm.id = 123;
-        vm.status = status;
-        vm.documentType = masterData.documentType;
+        vm.status = "";
+        vm.documentType = "";
         vm.name = '';
         vm.firstLastName = '';
         vm.secondLastName = "";
@@ -350,7 +370,7 @@
         vm.afp = "";
         vm.eps = "";
 
-        vm.validateForData = function (){
+        vm.validateFormData = function (){
             console.log('We are ok');
         };
     }
