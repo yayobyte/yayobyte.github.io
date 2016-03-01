@@ -18,7 +18,7 @@ module.exports = {
     },
     'status' : {
       type: 'boolean',
-      required: true,
+      required: true
     },
     'documentType' : {
       required: true,
@@ -28,7 +28,7 @@ module.exports = {
     },
     'name' : {
       type : 'string',
-      required : true,
+      required : true
     },
     'firstLastName' : {
       type : 'string',
@@ -142,10 +142,9 @@ module.exports = {
       model : 'Project'
     },
     'skill' : {
-      type : 'json',
+      type : 'array',
       required : true,
-      columnName: 'skills',
-      model : 'Skills'
+      columnName: 'skills_array'
     },
     'afp' : {
       type : 'integer',
