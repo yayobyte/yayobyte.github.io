@@ -101,7 +101,6 @@
         <div class="panel-body">
             <div class="alert  alert-dismissible" ng-class="[{'alert-warning' : !createUsersForm.$valid},{'alert-success' : createUsersForm.$valid}]">
                 <button type="button" class="close" data-dismiss="alert">X</button>
-                Form valid {{createUsersForm.$valid}} <br>
 
             </div>
 
@@ -126,7 +125,7 @@
                         </div>
                         <!-- Status -->
                         <div class="col-md-6">
-                            <div class="form-group has-success ">
+                            <div class="form-group ">
                                 <label for="inputStatus" class="col-md-4 control-label has-success">Status</label>
                                 <div class="col-md-4">
                                     <select class="form-control has-success" id="inputStatus" name="status"
@@ -549,16 +548,21 @@
                         </div>
                     </div>
 
-
-
-
                     <hr>
-                    <div class="form-group">
-                        <div class="col-sm-2 col-lg-offset-4">
-                            <button type="reset" class="btn btn-default btn-block">Cancel</button>
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-4 alert alert-dismissible"
+                                ng-show="createUsersForm.$dirty && createUsersForm.$invalid"
+                                ng-class="[{'alert-warning' : !createUsersForm.$valid}]"
+                                >
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            Please fill in all the required information
                         </div>
-                        <div class="col-sm-2">
-                            <button type="submit" class="btn btn-primary btn-block">Save User</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 col-sm-offset-5">
+                            <button type="submit" class="btn btn-primary pull-right btn-block"
+                                    ng-class="[{'disabled' : createUsersForm.$invalid}]"
+                                    ng-disabled="createUsersForm.$invalid" >Create User</button>
                         </div>
                     </div>
                 </fieldset>

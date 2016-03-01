@@ -119,6 +119,7 @@
 
         vm.validateFormData = function (){
             console.log('We are ok');
+            return true;
         };
     }
 })();
