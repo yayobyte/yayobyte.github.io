@@ -11,7 +11,10 @@ var dist = './dist';
 gulp.task('js:vendors', function() {
     return gulp.src([
 
+
         nodeModules + '/angular/angular.min.js',
+        nodeModules + '/angular-resource/angular-resource.min.js',
+
         nodeModules + '/jquery/dist/jquery.min.js',
         nodeModules + '/bootstrap/dist/js/bootstrap.min.js'
         //nodeModules + '/angular-bootstrap/**/*.min.js'

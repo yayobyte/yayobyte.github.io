@@ -1,6 +1,6 @@
 'use strict';
 (function(){
-    angular.module('usersModule')
+    angular.module('Humanity')
         .controller('ListUsersController',listUsersController)
         .factory("UserList", usersApi);
 

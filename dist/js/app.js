@@ -1,153 +1,246 @@
 'use strict';
 (function(){
+    angular.module('usersModule',[]);
+    angular.module('masterTables',[
+        'ngResource'
+    ]);
+
     angular.module('Humanity',[
-        'usersModule'
+        'usersModule',
+        'masterTables',
+        'ngResource'
        // 'ui.bootstrap'
     ]);
 })();
 
-'use strict';
+/**
+ * Consumes the AFP Table
+ */
+
 (function (){
-    angular.module('certificate',[]);
-})();
-
-'use strict';
-(function () {
-    angular.module('usersModule',['ngResource']);
-})();
-
-'use strict';
-(function(){
-    angular.module('certificateModule',[])
-        .controller('certificateCtrl', certificateCtrl);
-
-    function certificateCtrl(){
-
-    }
-})();
-
-'use strict';
-(function(){
-    angular.module('usersModule',['ngResource'])
-        .controller('AdminUsersController',adminUsersController)
-        .factory("BirthPlaceList", birthPlaceApi)
-        .factory("NationalityList", nationalityApi)
-        .factory("DocumentTypeList", documentTypeApi)
-        .factory("MaritalStatusList", maritalStatusApi)
-        .factory("RhList", rhApi)
-        .factory("ScholarshipList", scholarshipApi)
-        .factory("AfpList", afpApi)
-        .factory("EpsList", epsApi)
-        .factory("ProjectList", projectApi)
-        .factory("SeniorityList", seniorityApi)
-        .factory("SkillsList", skillsApi);
-
-    var moduleName = "User";
+    angular.module('Humanity')
+        .factory("AfpFactory", afpApi);
 
     var sailsEndpoint = "http://localhost:1337";
-    //Config Tables
     var afpEndpoint = sailsEndpoint + "/afp" ;
-    var epsEndPoint = sailsEndpoint + "/eps";
-    var projectEndPoint = sailsEndpoint + '/project';
-    var seniorityEndPoint = sailsEndpoint + "/seniority";
-    var skillsEndPoint = sailsEndpoint + '/skills';
 
-    //Master Tables
-    var usersApiEndpoint = sailsEndpoint + "/birthplace" ;
-    var nationalityEndPoint = sailsEndpoint + "/country";
-    var documentTypeEndPoint = sailsEndpoint + '/documenttype';
-    var maritalStatusEndPoint = sailsEndpoint + "/maritalstatus";
-    var rhEndPoint = sailsEndpoint + '/rh';
-    var scholarshipEndPoint = sailsEndpoint + "/scholarship";
-
-
-
-    //Config Tables
     function afpApi ($resource) {
         return $resource(afpEndpoint);
     }
+})();
+
+/**
+ * Consumes the birthplace table
+ */
+'use strict';
+(function (){
+    angular.module('Humanity')
+        .factory('BirthPlaceFactory',birthPlaceApi);
+
+    var sailsEndpoint = "http://localhost:1337";
+    var birthPlaceApiEndpoint = sailsEndpoint + "/birthplace" ;
+
+    function birthPlaceApi ($resource) {
+        return $resource(birthPlaceApiEndpoint);
+    }
+
+})();
+
+/**
+ * Consumes the Document Type table
+ */
+'use strict';
+(function (){
+    angular.module('Humanity')
+        .factory('DocumentTypeFactory',nationalityApi);
+
+    var sailsEndpoint = "http://localhost:1337";
+    var nationalityApiEndpoint = sailsEndpoint + "/country" ;
+
+    function nationalityApi ($resource) {
+        return $resource(nationalityApiEndpoint);
+    }
+
+})();
+
+/**
+ * Consumes the EPS Table
+ */
+
+(function (){
+    angular.module('Humanity')
+        .factory("EpsFactory", epsApi);
+
+    var sailsEndpoint = "http://localhost:1337";
+    var epsEndPoint = sailsEndpoint + "/eps";
+
     function epsApi ($resource) {
         return $resource (epsEndPoint);
     }
-    function projectApi ($resource){
-        return $resource (projectEndPoint);
-    }
-    function seniorityApi ($resource){
-        return $resource (seniorityEndPoint);
-    }
-    function skillsApi ($resource){
-        return $resource (skillsEndPoint);
-    }
+})();
+
+/**
+ * Consumes the Marital Status Master Table
+ */
+(function(){
+    angular.module('Humanity')
+        .factory('MaritalStatusFactory', maritalStatusApi);
 
 
-    //Master Tables
-    function birthPlaceApi ($resource) {
-        return $resource(usersApiEndpoint);
-    }
-    function nationalityApi ($resource) {
-        return $resource (nationalityEndPoint);
-    }
+    var sailsEndpoint = "http://localhost:1337";
+    var maritalStatusEndPoint = sailsEndpoint + "/maritalstatus";
+
     function maritalStatusApi ($resource){
         return $resource (maritalStatusEndPoint);
     }
-    function documentTypeApi ($resource){
-        return $resource (documentTypeEndPoint);
+})();
+
+/**
+ * Consumes the Country table
+ */
+'use strict';
+(function (){
+    angular.module('Humanity')
+        .factory('NationalityFactory',nationalityApi);
+
+    var sailsEndpoint = "http://localhost:1337";
+    var nationalityApiEndpoint = sailsEndpoint + "/country" ;
+
+    function nationalityApi ($resource) {
+        return $resource(nationalityApiEndpoint);
     }
+
+})();
+
+/**
+ * Consumes the Project Table
+ */
+
+(function (){
+    angular.module('Humanity')
+        .factory("ProjectFactory", projectApi)
+
+    var sailsEndpoint = "http://localhost:1337";
+    var projectEndPoint = sailsEndpoint + '/project';
+
+    function projectApi ($resource){
+        return $resource (projectEndPoint);
+    }
+})();
+
+/**
+ * Consumes the Rh master table
+ */
+
+(function (){
+    angular.module('Humanity')
+        .factory('RhFactory',rhApi);
+
+    var sailsEndpoint = "http://localhost:1337";
+    var rhEndPoint = sailsEndpoint + '/rh';
+
     function rhApi ($resource){
         return $resource (rhEndPoint);
     }
+})();
+
+/**
+ * Consumes the Scholarship Master Table
+ */
+(function (){
+    angular.module('Humanity')
+        .factory("ScholarshipFactory", scholarshipApi);
+
+    var sailsEndpoint = "http://localhost:1337";
+    var scholarshipEndPoint = sailsEndpoint + "/scholarship";
+
     function scholarshipApi ($resource){
         return $resource (scholarshipEndPoint);
     }
+})();
+
+/**
+ * Consumes the Seniority Table
+ */
+
+(function (){
+    angular.module('Humanity')
+        .factory("SeniorityFactory", seniorityApi);
+
+    var sailsEndpoint = "http://localhost:1337";
+    var seniorityEndPoint = sailsEndpoint + "/seniority";
+
+    function seniorityApi ($resource){
+        return $resource (seniorityEndPoint);
+    }
+})();
+
+/**
+ * Consumes the Skills table
+ */
+(function (){
+    angular.module('Humanity')
+        .factory("SkillsFactory", skillsApi);
+
+    var sailsEndpoint = "http://localhost:1337";
+    var skillsEndPoint = sailsEndpoint + '/skills';
+
+    function skillsApi ($resource){
+        return $resource (skillsEndPoint);
+    }
+})();
+
+'use strict';
+(function(){
+    angular.module('Humanity')
+        .controller('AdminUsersController',adminUsersController);
+
+    var moduleName = "User";
 
     function adminUsersController (
-        BirthPlaceList, NationalityList, DocumentTypeList, MaritalStatusList, RhList, ScholarshipList,
-        AfpList, EpsList, ProjectList, SeniorityList, SkillsList
+        BirthPlaceFactory, NationalityFactory, DocumentTypeFactory, MaritalStatusFactory, RhFactory, ScholarshipFactory,
+        AfpFactory, EpsFactory, ProjectFactory, SeniorityFactory, SkillsFactory
     )
     {
         var vm = this;
 
-
         vm.moduleName = moduleName;
 
-
         //Config Tables
-        AfpList.query(function(data){
+        AfpFactory.query(function(data){
             vm.afpTableData = data;
         });
-        EpsList.query(function(data){
+        EpsFactory.query(function(data){
             vm.epsTableData = data;
         });
-        ProjectList.query(function(data){
+        ProjectFactory.query(function(data){
             vm.projectTableData = data;
         });
-        SeniorityList.query(function(data){
+        SeniorityFactory.query(function(data){
             vm.seniorityTableData = data;
         });
-        SkillsList.query(function(data){
+        SkillsFactory.query(function(data){
             vm.skillsTableData = data;
         });
 
 
-
-
         //Master Tables
-        BirthPlaceList.query(function(data){
+        BirthPlaceFactory.query(function(data){
             vm.birthPlaceTableData = data;
         });
-        NationalityList.query(function (data){
+        NationalityFactory.query(function (data){
             vm.nationalityTableData = data;
         });
-        DocumentTypeList.query(function (data) {
+        DocumentTypeFactory.query(function (data) {
             vm.documentTypeTableData = data;
         });
-        MaritalStatusList.query(function (data) {
+        MaritalStatusFactory.query(function (data) {
             vm.maritalStatusTableData = data;
         });
-        RhList.query(function (data) {
+        RhFactory.query(function (data) {
             vm.rhTableData = data;
         });
-        ScholarshipList.query(function (data) {
+        ScholarshipFactory.query(function (data) {
             vm.scholarshipTableData = data;
         });
 
@@ -160,7 +253,7 @@
 
 'use strict';
 (function(){
-    angular.module('usersModule')
+    angular.module('Humanity')
         .controller('CreateUsersController', CreateUsersController)
 
     var moduleName = "Users";
@@ -265,7 +358,7 @@
 
 'use strict';
 (function(){
-    angular.module('usersModule')
+    angular.module('Humanity')
         .controller('ListUsersController',listUsersController)
         .factory("UserList", usersApi);
 

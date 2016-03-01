@@ -1,7 +1,14 @@
 'use strict';
 (function(){
+    angular.module('usersModule',[]);
+    angular.module('masterTables',[
+        'ngResource'
+    ]);
+
     angular.module('Humanity',[
-        'usersModule'
+        'usersModule',
+        'masterTables',
+        'ngResource'
        // 'ui.bootstrap'
     ]);
 })();
