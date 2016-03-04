@@ -23,7 +23,7 @@
 
     function CreateUsersController(DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
-                                   EpsFactory){
+                                   EpsFactory, SkillsFactory, UsersFactory){
         var vm = this;
         vm.moduleName = moduleName;
         vm.pageName = "create";
@@ -40,7 +40,20 @@
         vm.projectApi = "";
         vm.afpApi = "";
         vm.epsApi = "";
+        vm.skillsApi = "";
 
+        vm.postObject = {};
+        vm.postStatus = {};
+        vm.postStatus.error = false;
+        vm.postStatus.message = false;
+        vm.postStatus.postedForm = false;
+        vm.personalInfo = {};
+        vm.contactInfo = {};
+        vm.corporateInfo = {};
+        vm.securityInfo = {};
+
+        //Personal Info
+        vm.personalInfo.status = true;
 
         //Hard-coded selects
         vm.socialStratumApi = socialStratumApi;
@@ -77,49 +90,61 @@
         EpsFactory.query(function (data){
             vm.epsApi = data;
         });
+        SkillsFactory.query(function (data){
+            vm.skillsApi = data;
+        });
 
-        //Personal Info
-        vm.id = 123;
-        vm.status = "";
-        vm.documentType = "";
-        vm.name = '';
-        vm.firstLastName = '';
-        vm.secondLastName = "";
-        vm.address = "";
-        vm.birthday = "";
-        vm.age = "";
-        vm.birthPlace = "";
-        vm.nationality = "";
-        vm.nOfChildren = "";
-        vm.maritalStatus = "";
-        vm.scholarship = "";
-        vm.rh = "";
-        vm.bloodType = "";
-        vm.peopleInCharge = "";
-        vm.socialStratum = "";
+        vm.extractSkills = function (){
 
-        //Contact Info
-        vm.skype = "";
-        vm.personalEmail = "";
-        vm.cellphone = "";
-        vm.contactName = "";
-        vm.contactPhone = "";
-
-        //Corporate Info
-        vm.seniority = "";
-        vm.hiredTime = "";
-        vm.salary = "";
-        vm.corporateEmail = "";
-        vm.project = "";
-        vm.skill = "";
-
-        //Social Security
-        vm.afp = "";
-        vm.eps = "";
+            vm.postObject.skill = [];
+            for (var property in vm.corporateInfo.skills){
+                if(vm.corporateInfo.skills[property] == true){
+                    vm.postObject.skill.push(property);
+                }
+            }
+        };
 
         vm.validateFormData = function (){
-            console.log('We are ok');
+            console.log('Creating new user');
+
+            angular.extend(vm.postObject, vm.personalInfo);
+            vm.postObject.documentType = vm.personalInfo.documentType.id ;
+            vm.postObject.birthPlace = vm.personalInfo.birthPlace.id;
+            vm.postObject.nationality =  vm.personalInfo.nationality.id;
+            vm.postObject.maritalStatus = vm.personalInfo.maritalStatus.id;
+            vm.postObject.scholarship = vm.personalInfo.scholarship.id;
+            vm.postObject.socialStratum = vm.personalInfo.socialStratum.id;
+            vm.postObject.rh = vm.personalInfo.rh.id;
+
+            angular.extend(vm.postObject,vm.contactInfo);
+
+            angular.extend(vm.postObject,vm.corporateInfo);
+            vm.postObject.seniority = vm.corporateInfo.seniority.id;
+            vm.postObject.project = vm.corporateInfo.project.id;
+
+            vm.postObject.afp = vm.securityInfo.afp.id;
+            vm.postObject.eps = vm.securityInfo.eps.id;
+
+
+            UsersFactory.save(vm.postObject, function (response){
+                vm.postStatus  =  response;
+                vm.postStatus.message = "User successfully created"
+                vm.postStatus.error = false;
+                vm.resetInfo();
+            },function (error){
+                vm.postStatus = error;
+                vm.postStatus.message = "Error " + error.status + " " + error.statusText + " | Message: " + error.data.summary;
+                vm.postStatus.error = true;
+                vm.postStatus.postedForm = true;
+            });
             return true;
         };
+
+        vm.resetInfo = function (){
+            vm.personalInfo = {};
+            vm.contactInfo = {};
+            vm.corporateInfo = {};
+            vm.securityInfo = {};
+        }
     }
 })();

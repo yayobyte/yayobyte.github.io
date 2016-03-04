@@ -26,6 +26,12 @@ module.exports = {
       model : 'DocumentType',
       columnName : 'document_type'
     },
+    'documentNumber' : {
+      required: true,
+      type : 'integer',
+      columnName : 'document_number',
+      unique : true
+    },
     'name' : {
       type : 'string',
       required : true

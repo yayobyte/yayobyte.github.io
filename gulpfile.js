@@ -77,8 +77,10 @@ gulp.task('img', function (){
 
 /********************* WATCHERS *****************/
 gulp.task('watchers', function(){
-    gulp.watch(src + '/**/*.js', ['js:app','js:vendors']);
-    gulp.watch(src + '/**/*.html', ['html:views']);
+    gulp.watch(src + '/js/**/*.js', ['js:app','js:vendors']);
+    gulp.watch(src + '/views/**/*.html', ['html:views']);
+    gulp.watch(src + '/css/**/*.css', ['html:styles']);
+    gulp.watch(src + '/index.html', ['html:index']);
 });
 
 
@@ -90,7 +92,8 @@ gulp.task('default', [
     'styles',
     'html:views',
     'fonts',
-    'img'
+    'img',
+    'watchers'
 ])
 
 
