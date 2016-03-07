@@ -104,12 +104,11 @@
                   ng-submit="createUsersForm.$valid && createUsers.validateFormData()" novalidate>
                 <fieldset>
                     <legend>Personal Info</legend>
-                    {{createUsersForm}}
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group"
-                                 ng-class="[{'has-error' : createUsersForm.documentType.$invalid && createUsersForm.documentType.$dirty}]">
+                                 ng-class="[{'has-error' : createUsersForm.documentType.$invalid && createUsersForm.documentType.$touched}]">
                                 <!-- Document Type-->
                                 <label for="inputDocumentType" class="col-md-4 control-label">Document Type</label>
                                 <div class="col-md-8">
@@ -127,7 +126,7 @@
                                 <!-- Document Number -->
                                 <label for="inputDocumentNumber" class="col-md-4 control-label">Document Number</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="inputDocumentNumber" placeholder="Document Number"
+                                    <input type="number" class="form-control" id="inputDocumentNumber" placeholder="Document Number"
                                            ng-model="createUsers.personalInfo.documentNumber" name="documentNumber" required>
                                 </div>
                             </div>
@@ -187,7 +186,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.birthDay.$invalid && createUsersForm.birthDay.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.birthDay.$invalid && createUsersForm.birthDay.$touched}]">
                                 <!-- Birthday -->
                                 <label for="inputBirthDay" class="col-md-4 control-label">Birthday</label>
                                 <div class="col-md-8">
@@ -201,7 +200,7 @@
                                 <!-- Age -->
                                 <label for="inputAge" class="col-md-4 control-label">Age</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="inputAge" placeholder="Age"
+                                    <input type="number" class="form-control" id="inputAge" placeholder="Age"
                                            ng-model="createUsers.personalInfo.age" name="age" required>
                                 </div>
                             </div>
@@ -211,7 +210,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.birthPlace.$invalid && createUsersForm.birthPlace.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.birthPlace.$invalid && createUsersForm.birthPlace.$touched}]">
                                 <!-- Birth Place -->
                                 <label for="inputBirthPlace" class="col-md-4 control-label">Birth place</label>
                                 <div class="col-md-8">
@@ -223,7 +222,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.nationality.$invalid && createUsersForm.nationality.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.nationality.$invalid && createUsersForm.nationality.$touched}]">
                                 <!-- Nationality -->
                                 <label for="inputNationality" class="col-md-4 control-label">Nationality</label>
                                 <div class="col-md-8">
@@ -243,13 +242,13 @@
                                 <!-- # of children -->
                                 <label for="inputNOfChildren" class="col-md-4 control-label"># of Children</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="inputNOfChildren" placeholder="# of Children"
+                                    <input type="number" class="form-control" id="inputNOfChildren" placeholder="# of Children"
                                            ng-model="createUsers.personalInfo.nOfChildren" name="nOfChildren" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.maritalStatus.$invalid && createUsersForm.maritalStatus.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.maritalStatus.$invalid && createUsersForm.maritalStatus.$touched}]">
                                 <!-- Marital Status -->
                                 <label for="inputMaritalStatus" class="col-md-4 control-label">Marital
                                     Status</label>
@@ -266,7 +265,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.scholarship.$invalid && createUsersForm.scholarship.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.scholarship.$invalid && createUsersForm.scholarship.$touched}]">
                                 <!-- Scholarship -->
                                 <label for="inputScholarship" class="col-md-4 control-label ">Scholarship</label>
                                 <div class="col-md-8">
@@ -278,7 +277,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.rh.$invalid && createUsersForm.rh.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.rh.$invalid && createUsersForm.rh.$touched}]">
                                 <!-- RH -->
                                 <label for="inputRH" class="col-md-4 control-label">RH</label>
                                 <div class="col-md-4">
@@ -298,13 +297,13 @@
                                 <!-- People in charge -->
                                 <label for="inputPeopleInCharge" class="col-md-4 control-label ">People in charge</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="inputPeopleInCharge" name="propleInCharge"
+                                    <input type="number" class="form-control" id="inputPeopleInCharge" name="propleInCharge"
                                            placeholder="People in charge" ng-model="createUsers.personalInfo.peopleInCharge" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.socialStratum.$invalid && createUsersForm.socialStratum.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.socialStratum.$invalid && createUsersForm.socialStratum.$touched}]">
                                 <!-- Social Stratum  -->
                                 <label for="inputSocialStratum" class="col-md-4 control-label">Social Stratum</label>
                                 <div class="col-md-2">
@@ -322,6 +321,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
+
                             <div class="form-group" ng-class="[{'has-error' : createUsersForm.skype.$invalid && createUsersForm.skype.$dirty}]">
                                 <!-- Skype Id -->
                                 <label for="inputSkype" class="col-md-4 control-label">Skype</label>
@@ -360,6 +360,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
+
                             <div class="form-group" ng-class="[{'has-error' : createUsersForm.contactName.$invalid && createUsersForm.contactName.$dirty}]">
                                 <!-- Contact Name -->
                                 <label for="inputContactName" class="col-md-4 control-label">Contact Name</label>
@@ -370,11 +371,12 @@
                             </div>
                         </div>
                         <div class="col-md-6" >
+
                             <div class="form-group" ng-class="[{'has-error' : createUsersForm.contactPhoneName.$invalid && createUsersForm.contactPhoneName.$dirty}]">
                                 <!-- Phone Contact Name -->
                                 <label for="inputContactPhoneName" class="col-md-4 control-label">Contact Phone</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="inputContactPhoneName" name="contactPhoneName"
+                                    <input type="number" class="form-control" id="inputContactPhoneName" name="contactPhoneName"
                                            placeholder="Contact Phone" ng-model="createUsers.contactInfo.contactPhone">
                                 </div>
                             </div>
@@ -385,7 +387,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.seniority.$invalid && createUsersForm.seniority.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.seniority.$invalid && createUsersForm.seniority.$touched}]">
                                 <!-- Seniority -->
                                 <label for="inputSeniority" class="col-md-4 control-label">Seniority</label>
                                 <div class="col-md-8">
@@ -398,12 +400,12 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.hiredTime.$invalid && createUsersForm.hiredTime.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.hiredTime.$invalid && createUsersForm.hiredTime.$touched}]">
                                 <!-- Hired Time -->
                                 <label for="inputHiredTime" class="col-md-4 control-label">Hired Date</label>
                                 <div class="col-md-8">
                                     <input type="date" class="form-control" id="inputHiredTime" placeholder="Hired Time"
-                                           ng-model="createUsers.corporateInfo.hiredTime" name="hiredTime">
+                                           ng-model="createUsers.corporateInfo.hiredTime" name="hiredTime" required>
                                 </div>
                             </div>
                         </div>
@@ -417,7 +419,7 @@
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="text" class="form-control" id="inputSalary" placeholder="Salary"
+                                        <input type="number" class="form-control" id="inputSalary" placeholder="Salary"
                                                ng-model="createUsers.corporateInfo.salary" name="salary" required>
                                     </div>
                                 </div>
@@ -438,7 +440,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.project.$invalid && createUsersForm.project.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.project.$invalid && createUsersForm.project.$touched}]">
                                 <!-- Project -->
                                 <label for="inputProject" class="col-md-4 control-label">Project</label>
                                 <div class="col-md-8">
@@ -472,7 +474,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.afp.$invalid && createUsersForm.afp.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.afp.$invalid && createUsersForm.afp.$touched}]">
                                 <!-- AFP -->
                                 <label for="inputAFP" class="col-md-4 control-label">AFP</label>
                                 <div class="col-md-8">
@@ -484,7 +486,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.eps.$invalid && createUsersForm.eps.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.eps.$invalid && createUsersForm.eps.$touched}]">
                                 <!-- EPS -->
                                 <label for="inputEPS" class="col-md-4 control-label">EPS</label>
                                 <div class="col-md-8">
@@ -519,11 +521,7 @@
                                     ng-disabled="createUsersForm.$invalid" >Create User</button>
                         </div>
                     </div>
-
                 </fieldset>
-                <pre>Post Status : {{createUsers.postStatus}}</pre>
-                <pre>Post Sent : {{createUsers.postObject}}</pre>
-
             </form>
         </div>
     </div>
