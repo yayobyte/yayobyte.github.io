@@ -6,9 +6,9 @@
         .factory("SkillsFactory", skillsApi);
 
     var sailsEndpoint = "http://localhost:1337";
-    var skillsEndPoint = sailsEndpoint + '/skills';
+    var skillsEndPoint = sailsEndpoint + '/skills/:id';
 
     function skillsApi ($resource){
-        return $resource (skillsEndPoint);
+        return $resource (skillsEndPoint, {id:'@id'}, { update: {method:'PUT' }});
     }
 })();

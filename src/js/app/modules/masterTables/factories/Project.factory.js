@@ -7,9 +7,9 @@
         .factory("ProjectFactory", projectApi)
 
     var sailsEndpoint = "http://localhost:1337";
-    var projectEndPoint = sailsEndpoint + '/project';
+    var projectEndPoint = sailsEndpoint + '/project/:id';
 
     function projectApi ($resource){
-        return $resource (projectEndPoint);
+        return $resource (projectEndPoint, {id:'@id'}, { update: {method:'PUT' }});
     }
 })();

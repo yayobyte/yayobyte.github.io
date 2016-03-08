@@ -7,9 +7,9 @@
 
 
     var sailsEndpoint = "http://localhost:1337";
-    var maritalStatusEndPoint = sailsEndpoint + "/maritalstatus";
+    var maritalStatusEndPoint = sailsEndpoint + "/maritalstatus/:id";
 
     function maritalStatusApi ($resource){
-        return $resource (maritalStatusEndPoint);
+        return $resource (maritalStatusEndPoint, {id:'@id'}, { update: {method:'PUT' }});
     }
 })();

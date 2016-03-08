@@ -83,12 +83,13 @@
 <!-- End Breadcrums -->
 
 
-
 <!-- Page -->
 <div class="container" ng-controller="AdminUsersController as adminUsers">
-    <h1>{{adminUsers.moduleName}} <small>administration</small></h1>
+<h1>{{adminUsers.moduleName}} <small>administration</small></h1>
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
+
+
 
             <h3>Basic Config</h3>
             <div class="row">
@@ -100,7 +101,8 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target=".bs-example-modal-sm" data-toggle="modal" >Create</span></th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Afp')">Create</span></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -108,8 +110,8 @@
                             <td>{{afp.id}}</td>
                             <td>{{afp.name}}</td>
                             <td>
-                                <span class="btn label label-danger btn-xs" >Delete</span>
-                                <span class="btn label label-primary btn-xs">Update</span>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Afp',afp.id,afp.name)">Update</span>
                             </td>
                         </tr>
                         </tbody>
@@ -124,17 +126,17 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Actions <span class="btn label label-success btn-xs pull-right">Create</span></th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Eps')">Create</span></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="eps in adminUsers.epsTableData">
                             <td>{{eps.id}}</td>
                             <td>{{eps.name}}</td>
-                            <td>{{eps.nationality}}</td>
                             <td>
-                                <span class="btn label label-danger btn-xs">Delete</span>
-                                <span class="btn label label-primary btn-xs">Update</span>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Eps',eps.id,eps.name)">Update</span>
                             </td>
                         </tr>
                         </tbody>
@@ -149,15 +151,16 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Actions <span class="btn label label-success btn-xs pull-right">Create</span></th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Project')">Create</span></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="project in adminUsers.projectTableData">
+                        <tr ng-repeat="project in adminUsers.projectTableData" data-target="#insertModal"
+                            data-toggle="modal" ng-click="adminUsers.setupModal('Project',project.id,project.name)">
                             <td>{{project.id}}</td>
                             <td>{{project.name}}</td>
                             <td>
-                                <span class="btn label label-danger btn-xs">Delete</span>
                                 <span class="btn label label-primary btn-xs">Update</span>
                             </td>
                         </tr>
@@ -173,7 +176,8 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Actions <span class="btn label label-success btn-xs pull-right">Create</span></th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Seniority')">Create</span></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -181,8 +185,8 @@
                             <td>{{seniority.id}}</td>
                             <td>{{seniority.name}}</td>
                             <td>
-                                <span class="btn label label-danger btn-xs">Delete</span>
-                                <span class="btn label label-primary btn-xs">Update</span>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Seniority',seniority.id,seniority.name)">Update</span>
                             </td>
                         </tr>
                         </tbody>
@@ -198,7 +202,8 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Actions <span class="btn label label-success btn-xs pull-right">Create</span></th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Skills')">Create</span></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -206,8 +211,8 @@
                             <td>{{skills.id}}</td>
                             <td>{{skills.name}}</td>
                             <td>
-                                <span class="btn label label-danger btn-xs">Delete</span>
-                                <span class="btn label label-primary btn-xs">Update</span>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Skills',skills.id,skills.name)">Update</span>
                             </td>
                         </tr>
                         </tbody>
@@ -339,6 +344,9 @@
         </div>
     </div>
     <!-- End Intro -->
+    <insert-modal modal-name="{{adminUsers.modal.ModalHeader}}" record-id="{{adminUsers.modal.id}}"
+                  record-name="{{adminUsers.modal.name}}">
+    </insert-modal>
 
 </div>
 

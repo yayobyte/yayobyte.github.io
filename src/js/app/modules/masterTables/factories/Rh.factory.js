@@ -7,9 +7,9 @@
         .factory('RhFactory',rhApi);
 
     var sailsEndpoint = "http://localhost:1337";
-    var rhEndPoint = sailsEndpoint + '/rh';
+    var rhEndPoint = sailsEndpoint + '/rh/:id';
 
     function rhApi ($resource){
-        return $resource (rhEndPoint);
+        return $resource (rhEndPoint, {id:'@id'}, { update: {method:'PUT' }});
     }
 })();

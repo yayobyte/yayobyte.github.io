@@ -13,6 +13,7 @@
         var vm = this;
 
         vm.moduleName = moduleName;
+        vm.modal = {};
 
         //Config Tables
         AfpFactory.query(function(data){
@@ -54,6 +55,16 @@
 
         vm.arrayToString = function(string){
             return string.join(", ");
+        };
+
+        vm.setupModal = function (modalName,id,name) {
+            vm.modal.ModalHeader = modalName;
+            vm.modal.id = id;
+            vm.modal.name = name;
+        };
+
+        vm.createNewConfigRecord = function (tableName){
+
         };
 
     }

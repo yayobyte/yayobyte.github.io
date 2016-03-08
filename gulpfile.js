@@ -11,10 +11,8 @@ var dist = './dist';
 gulp.task('js:vendors', function() {
     return gulp.src([
 
-
         nodeModules + '/angular/angular.min.js',
         nodeModules + '/angular-resource/angular-resource.min.js',
-
         nodeModules + '/jquery/dist/jquery.min.js',
         nodeModules + '/bootstrap/dist/js/bootstrap.min.js'
         //nodeModules + '/angular-bootstrap/**/*.min.js'
@@ -33,7 +31,7 @@ gulp.task('js:app', function (){
 });
 
 /****************** CSS **********************/
-gulp.task('styles', function() {
+gulp.task('css:styles', function() {
     return gulp.src([
             src + '/css/vendors/**/*.css',
             src + '/css/**/*.css',
@@ -89,7 +87,7 @@ gulp.task('default', [
     'html:index',
     'js:app',
     'js:vendors',
-    'styles',
+    'css:styles',
     'html:views',
     'fonts',
     'img',

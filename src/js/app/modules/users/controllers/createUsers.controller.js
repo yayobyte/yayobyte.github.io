@@ -20,7 +20,6 @@
     ];
 
 
-
     function CreateUsersController(DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
                                    EpsFactory, SkillsFactory, UsersFactory){
@@ -125,10 +124,9 @@
             vm.postObject.afp = vm.securityInfo.afp.id;
             vm.postObject.eps = vm.securityInfo.eps.id;
 
-
             UsersFactory.save(vm.postObject, function (response){
                 vm.postStatus  =  response;
-                vm.postStatus.message = "User successfully created"
+                vm.postStatus.message = "User successfully created";
                 vm.postStatus.error = false;
                 vm.resetInfo();
             },function (error){
