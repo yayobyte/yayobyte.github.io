@@ -7,7 +7,7 @@
 
     function adminUsersController (
         BirthPlaceFactory, NationalityFactory, DocumentTypeFactory, MaritalStatusFactory, RhFactory, ScholarshipFactory,
-        AfpFactory, EpsFactory, ProjectFactory, SeniorityFactory, SkillsFactory
+        AfpFactory, EpsFactory, ProjectFactory, SeniorityFactory, SkillsFactory, ParamSocialSecurityEmailFactory
     )
     {
         var vm = this;
@@ -31,7 +31,9 @@
         SkillsFactory.query(function(data){
             vm.skillsTableData = data;
         });
-
+        ParamSocialSecurityEmailFactory.query(function (data){
+            vm.socialSecutiryEmailTableData = data;
+        });
 
         //Master Tables
         BirthPlaceFactory.query(function(data){

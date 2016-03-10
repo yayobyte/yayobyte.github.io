@@ -20,7 +20,8 @@ module.exports = {
     'name' : {
       type: 'string',
       columnName: 'name',
-      required: true
+      required: true,
+      unique : true
     }
   }
 };
