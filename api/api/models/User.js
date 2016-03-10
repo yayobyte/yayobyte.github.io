@@ -115,12 +115,10 @@ module.exports = {
     },
     'contactName' : {
       type : 'string',
-      required : true,
       columnName: 'contact_name'
     },
     'contactPhone' : {
       type : 'integer',
-      required : true,
       columnName: 'contact_phone'
     },
     'seniority' : {
