@@ -112,20 +112,31 @@
                 <thead>
                 <tr>
                     <th>{{listUsers.tableFields.id}}</th>
+                    <th>{{listUsers.tableFields.status}}</th>
                     <th>{{listUsers.tableFields.name}}</th>
                     <th>{{listUsers.tableFields.lastName}}</th>
                     <th>{{listUsers.tableFields.projectName}}</th>
-                    <th>{{listUsers.tableFields.status}}</th>
+
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody >
                 <tr ng-repeat="user in listUsers.tableData | filter : stringFilter">
                     <td>{{user.id}}</td>
+                    <td><span class="label" ng-class="[{'label-success' : user.status},{'label-danger': !user.status}]">
+                        {{user.status == 1 ? 'Active' : 'Inactive'}}</span>
+                    </td>
                     <td>{{user.name}}</td>
                     <td>{{user.firstLastName}} {{user.secondLastName}}</td>
                     <td>{{user.project.name}}</td>
-                    <td><span class="label" ng-class="[{'label-success' : user.status},{'label-danger': !user.status}]">
-                        {{user.status == 1 ? 'Active' : 'Inactive'}}</span>
+
+                    <td><button class="btn btn-sm" ng-click="listUsers.changeUserStatus(user.id, user.status)"
+                                ng-class="[{'btn-success' : !user.status},{'btn-danger': user.status}]">
+                            {{user.status == 1 ? 'Inactivate' : 'Activate'}}
+                        </button>
+                        <button class="btn btn-sm btn-primary" >
+                            Update
+                        </button>
                     </td>
                 </tr>
                 </tbody>

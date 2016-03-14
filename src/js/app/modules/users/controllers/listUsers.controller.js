@@ -11,9 +11,10 @@
         return $resource(usersApiEndpoint);
     }
 
-    function listUsersController (UserList){
+    function listUsersController (UserList, UsersFactory){
         var vm = this;
-
+        vm.postStatus = {};
+        vm.postObject = {};
         vm.moduleName = moduleName;
         vm.tableFields = {
             "id" : "#",
@@ -27,6 +28,22 @@
             vm.tableData = data;
         });
 
-
+        vm.changeUserStatus = function (userId, userStatus) {
+            vm.postObject.id = userId;
+            vm.postObject.status = (userStatus == 1 ? 0 : 1);
+            UsersFactory.save(vm.postObject, function (response){
+                vm.postStatus  =  response;
+                vm.postStatus.message = "User successfully created";
+                vm.postStatus.error = false;
+                UserList.query(function(data){
+                    vm.tableData = data;
+                });
+            },function (error){
+                vm.postStatus = error;
+                vm.postStatus.message = "Error " + error.status + " " + error.statusText + " | Message: " + error.data.summary;
+                vm.postStatus.error = true;
+                vm.postStatus.postedForm = true;
+            });
+        };
     }
 })();
