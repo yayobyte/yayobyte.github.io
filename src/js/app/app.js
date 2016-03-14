@@ -8,7 +8,8 @@
     angular.module('Humanity',[
         'usersModule',
         'masterTables',
-        'ngResource'
+        'ngResource',
+        'ngRoute'
        // 'ui.bootstrap'
     ]);
 })();

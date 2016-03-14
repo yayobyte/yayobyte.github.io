@@ -11,7 +11,7 @@
                 recordId : '@',
                 recordName : '@'
             },
-            templateUrl : "directives/modal-directive.html",
+            templateUrl : "html/users/directives/modal-directive.html",
             controller : modalController,
             controllerAs: "modalCtrl",
             bindToController: true
