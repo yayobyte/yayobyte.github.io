@@ -13,6 +13,9 @@
                 })
                 .when('/users/list',{
                     templateUrl: 'html/users/list.html'
+                })
+                .otherwise({
+                    templateUrl : 'html/generic/error.html'
                 });
         });
 })();
